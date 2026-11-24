@@ -60,6 +60,7 @@ class SiteTests(unittest.TestCase):
     def test_play_page_explains_rules_in_every_language(self):
         self.assertEqual([site.batch_points(n) for n in range(1, 6)], [1, 3, 6, 10, 15])
         self.assertEqual(site.BATCH_ROWS, 3)
+        self.assertEqual(site.COPY["ko"]["how"], "노는 법")
         for lang in site.languages.SUPPORTED:
             copy = site.COPY[lang]
             with self.subTest(lang=lang):
