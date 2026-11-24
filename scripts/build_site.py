@@ -29,7 +29,7 @@ SECTIONS = ("", "support/", "play/")
 LEGACY = ("zh-Hans", "ru", "ar", "hi")
 REDIRECT_OVERRIDES = {"zh-Hans": "zh-Hant"}
 STAMPS = ("flower", "moon", "star")
-BATCH_ROWS = 5
+BATCH_ROWS = 3  # 45초판 봉투 순서상 같은 도장은 최대 3장까지 이어진다(foundry-f034 lib/rules/round.dart)
 WRONG_TAP = "\u22122"
 
 

@@ -59,6 +59,7 @@ class SiteTests(unittest.TestCase):
 
     def test_play_page_explains_rules_in_every_language(self):
         self.assertEqual([site.batch_points(n) for n in range(1, 6)], [1, 3, 6, 10, 15])
+        self.assertEqual(site.BATCH_ROWS, 3)
         for lang in site.languages.SUPPORTED:
             copy = site.COPY[lang]
             with self.subTest(lang=lang):
@@ -76,8 +77,10 @@ class SiteTests(unittest.TestCase):
                     self.assertIn(fact, rules)
                 self.assertIn("TestFlight", copy["appText"])
                 self.assertIn(site.esc(copy["appText"]), html)
-                for n, points in ((1, 1), (2, 3), (3, 6), (4, 10), (5, 15)):
+                for n, points in ((1, 1), (2, 3), (3, 6)):
                     self.assertIn(f"<tr><td>{n}</td><td>+{points}</td></tr>", html)
+                self.assertNotIn("<tr><td>4</td>", html)
+                self.assertEqual(html.count("<tr><td>"), site.BATCH_ROWS)
                 self.assertIn(f"<td>{site.esc(copy['wrongTap'])}</td><td>\u22122</td>", html)
                 self.assertFalse(page.find("a", href=site.APP_STORE))
                 self.assertNotIn("apps.apple.com", html)
