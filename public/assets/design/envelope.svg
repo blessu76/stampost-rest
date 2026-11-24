@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="50" viewBox="0 0 52 50">
+  <defs>
+    <clipPath id="envelope-clip">
+      <rect x=".5" y=".5" width="51" height="49" rx="6.5"/>
+    </clipPath>
+  </defs>
+  <rect x=".5" y=".5" width="51" height="49" rx="6.5" fill="#fff5df"/>
+  <g clip-path="url(#envelope-clip)">
+    <rect x="6.24" y="-28" width="37.96" height="42.5" rx="2" transform="rotate(45 25.22 -6.75)" fill="#f8e2c4" stroke="#dcbda5"/>
+  </g>
+  <rect x=".5" y=".5" width="51" height="49" rx="6.5" fill="none" stroke="#d2a096"/>
+</svg>

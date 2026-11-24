@@ -1,0 +1,103 @@
+import hashlib
+import json
+import unittest
+from html.parser import HTMLParser
+from pathlib import Path
+from urllib.parse import urlsplit
+from xml.etree import ElementTree as ET
+
+from scripts import build_site as site
+
+
+class Page(HTMLParser):
+    def __init__(self, path):
+        super().__init__(convert_charrefs=True)
+        self.tags = []
+        self.feed(path.read_text(encoding="utf-8"))
+
+    def handle_starttag(self, tag, attrs):
+        self.tags.append((tag, dict(attrs)))
+
+    def find(self, tag, **selectors):
+        return [
+            attrs for name, attrs in self.tags
+            if name == tag and all(key in attrs and attrs[key] == value for key, value in selectors.items())
+        ]
+
+
+class SiteTests(unittest.TestCase):
+    def test_locked_web_kit(self):
+        pkg = site.ROOT / "vendor/ipe_web_kit"
+        lines = pkg.with_suffix(".lock").read_text(encoding="utf-8").splitlines()
+        lock = dict(line.split("=", 1) for line in lines)
+        self.assertEqual((pkg / "KIT_VERSION").read_text().split(), [lock["tag"], lock["commit"]])
+        self.assertEqual(hashlib.sha256((pkg / "MANIFEST.sha256").read_bytes()).hexdigest(), lock["manifest_sha256"])
+
+    def test_languages_and_game_metadata(self):
+        self.assertEqual(set(site.COPY), set(site.languages.SUPPORTED))
+        for lang, copy in site.COPY.items():
+            with self.subTest(lang=lang):
+                self.assertEqual(len(copy["stamps"]), 3)
+                self.assertEqual(set(copy), set(site.COPY["en"]))
+                page_path = site.PUBLIC / site.route(lang).lstrip("/") / "index.html"
+                page = Page(page_path)
+                self.assertEqual(len(page.find("html", lang=lang)), 1)
+                self.assertCountEqual(
+                    [option["lang"] for option in page.find("option")],
+                    site.languages.SUPPORTED,
+                )
+                button, = page.find("button", **{"data-store-url": site.APP_STORE})
+                self.assertIn("disabled", button)
+                self.assertFalse(page.find("a", href=site.APP_STORE))
+                game_json = page_path.read_text(encoding="utf-8").split(
+                    '<script type="application/ld+json">', 1
+                )[1].split("</script>", 1)[0]
+                game = json.loads(game_json)["@graph"][1]
+                self.assertEqual(game["@type"], ["VideoGame", "MobileApplication"])
+                self.assertEqual(game["inLanguage"], lang)
+                self.assertEqual(game["name"], copy["name"])
+
+    def test_site_links_alternates_and_cache_busting(self):
+        for lang in site.languages.SUPPORTED:
+            for section in site.SECTIONS:
+                route = site.route(lang, section)
+                with self.subTest(route=route):
+                    page = Page(site.PUBLIC / route.lstrip("/") / "index.html")
+                    self.assertEqual(len(page.find("link", rel="canonical", href=site.BASE + route)), 1)
+                    alternates = {tag["hreflang"]: tag["href"] for tag in page.find("link", rel="alternate")}
+                    self.assertEqual(alternates, {**site.alternate_urls(section), "x-default": site.BASE + site.route("en", section)})
+                    self.assertEqual(len(page.find("a", href=site.PRIVACY)), 1)
+                    self.assertEqual(len(page.find("a", href=site.TERMS)), 1)
+                    for tag, attribute in (("a", "href"), ("option", "value"), ("link", "href"), ("script", "src"), ("img", "src")):
+                        for attrs in page.find(tag):
+                            target = urlsplit(attrs.get(attribute, ""))
+                            if not target.path.startswith("/") or target.netloc:
+                                continue
+                            path = site.PUBLIC / target.path.lstrip("/")
+                            self.assertTrue((path / "index.html").is_file() if target.path.endswith("/") else path.is_file(), target.path)
+                            if target.path.startswith("/assets/"):
+                                self.assertTrue(target.query.startswith("v="), target.path)
+
+    def test_retired_languages_are_redirects_only(self):
+        mapping = {"ru": "en", "ar": "en", "hi": "en", "zh-Hans": "zh-Hant"}
+        for old, target in mapping.items():
+            for section in site.SECTIONS:
+                with self.subTest(lang=old, section=section):
+                    page = Page(site.PUBLIC / old / section / "index.html")
+                    dest = site.BASE + site.route(target, section)
+                    self.assertEqual(len(page.find("meta", name="robots", content="noindex,follow")), 1)
+                    self.assertEqual(len(page.find("meta", **{"http-equiv": "refresh", "content": "0; url=" + dest})), 1)
+                    self.assertEqual(len(page.find("link", rel="canonical", href=dest)), 1)
+                    self.assertFalse(page.find("link", rel="alternate"))
+
+    def test_search_discovery(self):
+        sitemap_file = site.PUBLIC / "sitemap.xml"
+        self.assertFalse(site.redirects.sitemap_leaks(sitemap_file.read_text(), overrides=site.REDIRECT_OVERRIDES))
+        tree = ET.parse(sitemap_file)
+        ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        expected = [site.BASE + site.route(lang, section) for section in site.SECTIONS for lang in site.languages.SUPPORTED]
+        self.assertCountEqual([loc.text for loc in tree.findall("s:url/s:loc", ns)], expected)
+        self.assertIn(f"Sitemap: {site.BASE}/sitemap.xml", (site.PUBLIC / "robots.txt").read_text())
+        self.assertEqual((site.PUBLIC / "CNAME").read_text().strip(), site.DOMAIN)
+        self.assertIn(f"{site.BASE}/support/", (site.PUBLIC / "llms.txt").read_text())
+        self.assertEqual(len(Page(site.PUBLIC / "404.html").find("meta", name="robots", content="noindex,follow")), 1)

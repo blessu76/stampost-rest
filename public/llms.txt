@@ -1,0 +1,26 @@
+# Stampost / 도장 우체국
+
+> A one-tap mail sorting puzzle by ipe studio. Match the stamp on the first envelope, dispatch the matching batch, and keep the queue to six letters or fewer in a 45-second round.
+
+## Official pages
+
+- [Game overview](https://stampost.ipe.rest/)
+- [Support and FAQ](https://stampost.ipe.rest/support/)
+- [Browser play status](https://stampost.ipe.rest/play/)
+- [Terms of use](https://ipe.rest/legal/)
+- [Privacy policy](https://ipe.rest/privacy/)
+
+## Languages
+
+- [English](https://stampost.ipe.rest/)
+- [한국어](https://stampost.ipe.rest/ko/)
+- [日本語](https://stampost.ipe.rest/ja/)
+- [繁體中文](https://stampost.ipe.rest/zh-Hant/)
+- [Español](https://stampost.ipe.rest/es/)
+- [Português (Brasil)](https://stampost.ipe.rest/pt-BR/)
+- [Français](https://stampost.ipe.rest/fr/)
+- [Deutsch](https://stampost.ipe.rest/de/)
+- [Bahasa Indonesia](https://stampost.ipe.rest/id/)
+- [ไทย](https://stampost.ipe.rest/th/)
+- [Tiếng Việt](https://stampost.ipe.rest/vi/)
+- [Türkçe](https://stampost.ipe.rest/tr/)
