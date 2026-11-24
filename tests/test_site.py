@@ -74,9 +74,13 @@ class SiteTests(unittest.TestCase):
                 self.assertEqual(len(copy["steps"]), 5)
                 for step in copy["steps"]:
                     self.assertIn(f"<li>{site.esc(step)}</li>", html)
-                rules = " ".join(copy["steps"])
-                for fact in ("45", "6", "n(n+1)/2", "2", "0"):
-                    self.assertIn(fact, rules)
+                # 규칙 숫자는 단계마다 제자리에 정확히 — round.dart: 45초 · 대기줄 6 · n(n+1)/2 · 오답 −2 · 0점 하한
+                self.assertIn("n(n+1)/2", copy["steps"][3])
+                numbers = [re.findall(r"\d+", step.replace("n(n+1)/2", "")) for step in copy["steps"]]
+                expected = [{"45"}, {"6"}, set(), set(), {"2", "0"}]
+                for found, facts in zip(numbers, expected):
+                    self.assertLessEqual(facts, set(found))
+                    self.assertLessEqual(set(found), facts | {"1"})  # ja: 「1ラウンド」
                 self.assertIn("TestFlight", copy["appText"])
                 self.assertIn(site.esc(copy["appText"]), html)
                 for n, points in ((1, 1), (2, 3), (3, 6)):
