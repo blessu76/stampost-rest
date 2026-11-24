@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jugar en el navegador | Stampost</title>
-<meta name="description" content="Pronto podrás jugar a Stampost aquí, en tu navegador.">
+<title>Cómo jugar | Stampost</title>
+<meta name="description" content="Clasifica cada sobre antes de que la fila se llene. Aquí tienes todo lo necesario para una partida de 45 segundos.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="Jugar en el navegador | Stampost">
-<meta property="og:description" content="Pronto podrás jugar a Stampost aquí, en tu navegador.">
+<meta property="og:title" content="Cómo jugar | Stampost">
+<meta property="og:description" content="Clasifica cada sobre antes de que la fila se llene. Aquí tienes todo lo necesario para una partida de 45 segundos.">
 <meta property="og:url" content="https://stampost.ipe.rest/es/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/es/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>Jugar en el navegador</h1>
-  <p class="intro">Pronto podrás jugar a Stampost aquí, en tu navegador.</p>
+  <h1>Cómo jugar</h1>
+  <p class="intro">Clasifica cada sobre antes de que la fila se llene. Aquí tienes todo lo necesario para una partida de 45 segundos.</p>
+  <section class="page-section">
+    <ol class="steps"><li>Cada partida dura 45 segundos.</li><li>Los sobres hacen fila frente al buzón rojo. Pueden esperar hasta 6; si la fila se desborda, la oficina de correos cierra y la partida termina.</li><li>Mira el sello del primer sobre y toca el botón del buzón con el mismo color y forma: flor, luna o estrella.</li><li>Todos los sobres iguales seguidos al frente salen juntos. Un lote de n sobres suma n(n+1)/2 puntos.</li><li>Un toque equivocado resta 2 puntos. Tu puntuación nunca baja de 0.</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>Puntuación</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">Sobres en un lote</th><th scope="col">Puntos</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>Toque equivocado</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>Sobre la app</h2>
+    <p>La app para iOS y Android se está preparando para pruebas en TestFlight. Aún no hay enlace de tienda y el juego no se puede jugar en el navegador.</p>
+  </section>
   <a class="back" href="/es/">Sobre el juego</a>
 </section>
 </main>

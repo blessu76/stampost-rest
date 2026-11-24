@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ブラウザで遊ぶ | Stampost</title>
-<meta name="description" content="まもなくこのブラウザで遊べるようになります。">
+<title>遊び方 | Stampost</title>
+<meta name="description" content="待ち列があふれる前に、封筒をすべて仕分けましょう。45秒の1ラウンドに必要なことをまとめました。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="ブラウザで遊ぶ | Stampost">
-<meta property="og:description" content="まもなくこのブラウザで遊べるようになります。">
+<meta property="og:title" content="遊び方 | Stampost">
+<meta property="og:description" content="待ち列があふれる前に、封筒をすべて仕分けましょう。45秒の1ラウンドに必要なことをまとめました。">
 <meta property="og:url" content="https://stampost.ipe.rest/ja/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/ja/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>ブラウザで遊ぶ</h1>
-  <p class="intro">まもなくこのブラウザで遊べるようになります。</p>
+  <h1>遊び方</h1>
+  <p class="intro">待ち列があふれる前に、封筒をすべて仕分けましょう。45秒の1ラウンドに必要なことをまとめました。</p>
+  <section class="page-section">
+    <ol class="steps"><li>1ラウンドは45秒です。</li><li>封筒は赤いポストの前に並びます。待てるのは6通まで。あふれると郵便局が閉まり、ラウンド終了です。</li><li>先頭の封筒のスタンプを見て、同じ色と形のポストボタン（花・月・星）をタップします。</li><li>先頭から続く同じスタンプの封筒がまとめて出ていきます。n通まとめると n(n+1)/2 点です。</li><li>間違えると2点減ります。スコアは0点より下がりません。</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>スコア</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">まとめて送った封筒</th><th scope="col">点数</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>タップミス</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>アプリについて</h2>
+    <p>iOS・Android アプリは TestFlight でのテストに向けて準備中です。ストアのリンクはまだなく、ブラウザではプレイできません。</p>
+  </section>
   <a class="back" href="/ja/">ゲーム紹介</a>
 </section>
 </main>

@@ -238,6 +238,22 @@ a.action:hover { background: #801c2a; }
 .page-section dt { font-weight: 800; }
 .page-section dd { margin: 0 0 .85rem; color: var(--muted); }
 .page .back { margin-block-start: 1rem; }
+.steps { margin: 0; padding-inline-start: 1.4rem; }
+.steps li + li { margin-block-start: .55rem; }
+.score-table {
+  width: 100%;
+  max-width: 26rem;
+  border: 1px solid var(--hair);
+  border-radius: var(--ipe-radius);
+  border-spacing: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+.score-table th, .score-table td { padding: .5rem .85rem; text-align: start; }
+.score-table th { font-size: .875rem; color: var(--muted); }
+.score-table td + td, .score-table th + th { text-align: end; font-variant-numeric: tabular-nums; }
+.score-table td { border-block-start: 1px solid var(--hair); font-weight: 700; }
+.score-table .penalty td { color: var(--red); }
 .footer { border-block-start: 1px solid var(--hair); background: var(--paper); }
 .footer .ipe-studio { margin: 0; }
 

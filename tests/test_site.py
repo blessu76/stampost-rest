@@ -57,6 +57,34 @@ class SiteTests(unittest.TestCase):
                 self.assertEqual(game["inLanguage"], lang)
                 self.assertEqual(game["name"], copy["name"])
 
+    def test_play_page_explains_rules_in_every_language(self):
+        self.assertEqual([site.batch_points(n) for n in range(1, 6)], [1, 3, 6, 10, 15])
+        for lang in site.languages.SUPPORTED:
+            copy = site.COPY[lang]
+            with self.subTest(lang=lang):
+                page_path = site.PUBLIC / site.route(lang, "play/").lstrip("/") / "index.html"
+                self.assertTrue(page_path.is_file())
+                html = page_path.read_text(encoding="utf-8")
+                page = Page(page_path)
+                self.assertEqual(len(page.find("html", lang=lang)), 1)
+                self.assertIn(f"<h1>{site.esc(copy['how'])}</h1>", html)
+                self.assertEqual(len(copy["steps"]), 5)
+                for step in copy["steps"]:
+                    self.assertIn(f"<li>{site.esc(step)}</li>", html)
+                rules = " ".join(copy["steps"])
+                for fact in ("45", "6", "n(n+1)/2", "2", "0"):
+                    self.assertIn(fact, rules)
+                self.assertIn("TestFlight", copy["appText"])
+                self.assertIn(site.esc(copy["appText"]), html)
+                for n, points in ((1, 1), (2, 3), (3, 6), (4, 10), (5, 15)):
+                    self.assertIn(f"<tr><td>{n}</td><td>+{points}</td></tr>", html)
+                self.assertIn(f"<td>{site.esc(copy['wrongTap'])}</td><td>\u22122</td>", html)
+                self.assertFalse(page.find("a", href=site.APP_STORE))
+                self.assertNotIn("apps.apple.com", html)
+                self.assertNotIn("play.google.com", html)
+                home = Page(site.PUBLIC / site.route(lang).lstrip("/") / "index.html")
+                self.assertEqual(len(home.find("a", href=site.route(lang, "play/"))), 1)
+
     def test_site_links_alternates_and_cache_busting(self):
         for lang in site.languages.SUPPORTED:
             for section in site.SECTIONS:

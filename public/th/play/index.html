@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>เล่นในเบราว์เซอร์ | Stampost</title>
-<meta name="description" content="เร็ว ๆ นี้คุณจะเล่น Stampost ได้จากเบราว์เซอร์ที่นี่">
+<title>วิธีเล่น | Stampost</title>
+<meta name="description" content="คัดแยกซองจดหมายให้หมดก่อนแถวจะล้น นี่คือทุกอย่างที่ต้องรู้สำหรับการเล่นรอบละ 45 วินาที">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="เล่นในเบราว์เซอร์ | Stampost">
-<meta property="og:description" content="เร็ว ๆ นี้คุณจะเล่น Stampost ได้จากเบราว์เซอร์ที่นี่">
+<meta property="og:title" content="วิธีเล่น | Stampost">
+<meta property="og:description" content="คัดแยกซองจดหมายให้หมดก่อนแถวจะล้น นี่คือทุกอย่างที่ต้องรู้สำหรับการเล่นรอบละ 45 วินาที">
 <meta property="og:url" content="https://stampost.ipe.rest/th/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/th/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>เล่นในเบราว์เซอร์</h1>
-  <p class="intro">เร็ว ๆ นี้คุณจะเล่น Stampost ได้จากเบราว์เซอร์ที่นี่</p>
+  <h1>วิธีเล่น</h1>
+  <p class="intro">คัดแยกซองจดหมายให้หมดก่อนแถวจะล้น นี่คือทุกอย่างที่ต้องรู้สำหรับการเล่นรอบละ 45 วินาที</p>
+  <section class="page-section">
+    <ol class="steps"><li>แต่ละรอบใช้เวลา 45 วินาที</li><li>ซองจดหมายจะต่อแถวหน้าตู้ไปรษณีย์สีแดง รอได้สูงสุด 6 ซอง ถ้าแถวล้น ไปรษณีย์จะปิดและจบรอบ</li><li>ดูตราประทับบนซองแรก แล้วแตะปุ่มตู้ไปรษณีย์ที่มีสีและรูปทรงเดียวกัน: ดอกไม้ พระจันทร์ หรือดาว</li><li>ซองที่ตราเหมือนกันและเรียงต่อกันจากหน้าแถวจะถูกส่งออกพร้อมกัน ส่ง n ซองในครั้งเดียวได้ n(n+1)/2 คะแนน</li><li>แตะผิดจะเสีย 2 คะแนน คะแนนจะไม่ต่ำกว่า 0</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>การนับคะแนน</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">จำนวนซองที่ส่งพร้อมกัน</th><th scope="col">คะแนน</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>แตะผิด</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>เกี่ยวกับแอป</h2>
+    <p>แอป iOS และ Android กำลังเตรียมทดสอบผ่าน TestFlight ตอนนี้ยังไม่มีลิงก์สโตร์ และยังเล่นในเบราว์เซอร์ไม่ได้</p>
+  </section>
   <a class="back" href="/th/">แนะนำเกม</a>
 </section>
 </main>

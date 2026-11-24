@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Play in browser | Stampost</title>
-<meta name="description" content="Stampost will be playable right here in your browser.">
+<title>How to play | Stampost</title>
+<meta name="description" content="Sort every envelope before the line backs up. Here is everything you need for a 45-second round.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="Play in browser | Stampost">
-<meta property="og:description" content="Stampost will be playable right here in your browser.">
+<meta property="og:title" content="How to play | Stampost">
+<meta property="og:description" content="Sort every envelope before the line backs up. Here is everything you need for a 45-second round.">
 <meta property="og:url" content="https://stampost.ipe.rest/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>Play in browser</h1>
-  <p class="intro">Stampost will be playable right here in your browser.</p>
+  <h1>How to play</h1>
+  <p class="intro">Sort every envelope before the line backs up. Here is everything you need for a 45-second round.</p>
+  <section class="page-section">
+    <ol class="steps"><li>Each round lasts 45 seconds.</li><li>Envelopes line up at the red postbox. Up to 6 can wait — if the line overflows, the post office closes and the round ends.</li><li>Check the stamp on the first envelope, then tap the postbox button with the same color and shape: flower, moon, or star.</li><li>Every matching envelope in a row at the front goes out together. A batch of n envelopes scores n(n+1)/2 points.</li><li>A wrong tap costs 2 points. Your score never drops below 0.</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>Scoring</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">Envelopes in one batch</th><th scope="col">Points</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>Wrong tap</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>Getting the app</h2>
+    <p>The iOS and Android app is being prepared for TestFlight testing. There is no store link yet, and the game can’t be played in the browser.</p>
+  </section>
   <a class="back" href="/">Game overview</a>
 </section>
 </main>

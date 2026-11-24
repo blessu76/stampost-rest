@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jouer dans le navigateur | Stampost</title>
-<meta name="description" content="Vous pourrez bientôt jouer à Stampost ici, dans votre navigateur.">
+<title>Comment jouer | Stampost</title>
+<meta name="description" content="Triez chaque enveloppe avant que la file ne déborde. Voici tout ce qu’il faut savoir pour une partie de 45 secondes.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="Jouer dans le navigateur | Stampost">
-<meta property="og:description" content="Vous pourrez bientôt jouer à Stampost ici, dans votre navigateur.">
+<meta property="og:title" content="Comment jouer | Stampost">
+<meta property="og:description" content="Triez chaque enveloppe avant que la file ne déborde. Voici tout ce qu’il faut savoir pour une partie de 45 secondes.">
 <meta property="og:url" content="https://stampost.ipe.rest/fr/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/fr/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>Jouer dans le navigateur</h1>
-  <p class="intro">Vous pourrez bientôt jouer à Stampost ici, dans votre navigateur.</p>
+  <h1>Comment jouer</h1>
+  <p class="intro">Triez chaque enveloppe avant que la file ne déborde. Voici tout ce qu’il faut savoir pour une partie de 45 secondes.</p>
+  <section class="page-section">
+    <ol class="steps"><li>Chaque partie dure 45 secondes.</li><li>Les enveloppes font la queue devant la boîte aux lettres rouge. 6 peuvent attendre au maximum ; si la file déborde, le bureau de poste ferme et la partie s’arrête.</li><li>Regardez le tampon de la première enveloppe, puis touchez le bouton de la boîte aux lettres de même couleur et de même forme : fleur, lune ou étoile.</li><li>Toutes les enveloppes identiques qui se suivent en tête partent ensemble. Un lot de n enveloppes rapporte n(n+1)/2 points.</li><li>Une erreur coûte 2 points. Votre score ne descend jamais sous 0.</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>Score</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">Enveloppes dans un lot</th><th scope="col">Points</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>Mauvais choix</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>L’application</h2>
+    <p>L’application iOS et Android est en préparation pour des tests sur TestFlight. Il n’y a pas encore de lien vers les stores, et le jeu n’est pas jouable dans le navigateur.</p>
+  </section>
   <a class="back" href="/fr/">Présentation du jeu</a>
 </section>
 </main>

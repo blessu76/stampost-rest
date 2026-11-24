@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Im Browser spielen | Stampost</title>
-<meta name="description" content="Bald kannst du Stampost hier im Browser spielen.">
+<title>So wird gespielt | Stampost</title>
+<meta name="description" content="Sortiere jeden Umschlag, bevor sich die Schlange staut. Hier steht alles, was du für eine 45-Sekunden-Runde brauchst.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stampost">
-<meta property="og:title" content="Im Browser spielen | Stampost">
-<meta property="og:description" content="Bald kannst du Stampost hier im Browser spielen.">
+<meta property="og:title" content="So wird gespielt | Stampost">
+<meta property="og:description" content="Sortiere jeden Umschlag, bevor sich die Schlange staut. Hier steht alles, was du für eine 45-Sekunden-Runde brauchst.">
 <meta property="og:url" content="https://stampost.ipe.rest/de/play/">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://stampost.ipe.rest/de/play/">
@@ -27,7 +27,7 @@
 <link rel="alternate" hreflang="x-default" href="https://stampost.ipe.rest/play/">
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
-<link rel="stylesheet" href="/assets/stampost.css?v=4a1ea95f34">
+<link rel="stylesheet" href="/assets/stampost.css?v=89040a262b">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
@@ -41,8 +41,22 @@
 </header>
 <main>
 <section class="page wrap">
-  <h1>Im Browser spielen</h1>
-  <p class="intro">Bald kannst du Stampost hier im Browser spielen.</p>
+  <h1>So wird gespielt</h1>
+  <p class="intro">Sortiere jeden Umschlag, bevor sich die Schlange staut. Hier steht alles, was du für eine 45-Sekunden-Runde brauchst.</p>
+  <section class="page-section">
+    <ol class="steps"><li>Eine Runde dauert 45 Sekunden.</li><li>Die Umschläge stellen sich am roten Briefkasten an. Bis zu 6 dürfen warten – läuft die Schlange über, schließt die Post und die Runde endet.</li><li>Sieh dir den Stempel auf dem vordersten Umschlag an und tippe auf die Briefkasten-Taste mit derselben Farbe und Form: Blume, Mond oder Stern.</li><li>Alle passenden Umschläge, die vorne aufeinanderfolgen, gehen zusammen raus. Ein Stapel aus n Umschlägen bringt n(n+1)/2 Punkte.</li><li>Ein falscher Tipp kostet 2 Punkte. Dein Punktestand fällt nie unter 0.</li></ol>
+  </section>
+  <section class="page-section">
+    <h2>Punkte</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">Umschläge pro Stapel</th><th scope="col">Punkte</th></tr></thead>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr class="penalty"><td>Falscher Tipp</td><td>−2</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>Zur App</h2>
+    <p>Die App für iOS und Android wird gerade für Tests über TestFlight vorbereitet. Einen Store-Link gibt es noch nicht, und im Browser lässt sich das Spiel nicht spielen.</p>
+  </section>
   <a class="back" href="/de/">Spielübersicht</a>
 </section>
 </main>

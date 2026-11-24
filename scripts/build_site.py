@@ -29,6 +29,12 @@ SECTIONS = ("", "support/", "play/")
 LEGACY = ("zh-Hans", "ru", "ar", "hi")
 REDIRECT_OVERRIDES = {"zh-Hans": "zh-Hant"}
 STAMPS = ("flower", "moon", "star")
+BATCH_ROWS = 5
+WRONG_TAP = "\u22122"
+
+
+def batch_points(n):
+    return n * (n + 1) // 2
 
 
 def route(lang, section=""):
@@ -75,7 +81,7 @@ def render_home(lang, copy, artwork):
     <p class="hero-line">{esc(copy["hero"])}</p>
     <p class="intro">{esc(copy["description"])}</p>
     <div class="actions">
-      <a class="action" href="{route(lang, 'play/')}">{esc(copy["play"])}</a>
+      <a class="action" href="{route(lang, 'play/')}">{esc(copy["how"])}</a>
       <button type="button" disabled class="action store" data-store-url="{APP_STORE}">App Store <span>{esc(copy["soon"])}</span></button>
     </div>
   </div>
@@ -119,9 +125,27 @@ def render_detail(lang, section, copy):
   {back}
 </section>"""
     if section == "play/":
+        steps = "".join(f"<li>{esc(step)}</li>" for step in copy["steps"])
+        rows = "".join(
+            f"<tr><td>{n}</td><td>+{batch_points(n)}</td></tr>" for n in range(1, BATCH_ROWS + 1)
+        )
         return f"""<section class="page wrap">
-  <h1>{esc(copy["play"])}</h1>
-  <p class="intro">{esc(copy["playText"])}</p>
+  <h1>{esc(copy["how"])}</h1>
+  <p class="intro">{esc(copy["playIntro"])}</p>
+  <section class="page-section">
+    <ol class="steps">{steps}</ol>
+  </section>
+  <section class="page-section">
+    <h2>{esc(copy["scoring"])}</h2>
+    <table class="score-table">
+      <thead><tr><th scope="col">{esc(copy["batch"])}</th><th scope="col">{esc(copy["points"])}</th></tr></thead>
+      <tbody>{rows}<tr class="penalty"><td>{esc(copy["wrongTap"])}</td><td>{WRONG_TAP}</td></tr></tbody>
+    </table>
+  </section>
+  <section class="page-section">
+    <h2>{esc(copy["appTitle"])}</h2>
+    <p>{esc(copy["appText"])}</p>
+  </section>
   {back}
 </section>"""
     return f'<section class="page wrap"><h1>{esc(copy["missing"])}</h1>{back}</section>'
@@ -135,10 +159,10 @@ def render_page(lang, section, stylesheets, scripts, artwork):
     title = {
         "": f'{brand} | {copy["tagline"]}',
         "support/": f'{copy["support"]} | {brand}',
-        "play/": f'{copy["play"]} | {brand}',
+        "play/": f'{copy["how"]} | {brand}',
         "404.html": f'404 | {brand}',
     }[section]
-    desc = {"": copy["description"], "support/": copy["supportText"], "play/": copy["playText"],
+    desc = {"": copy["description"], "support/": copy["supportText"], "play/": copy["playIntro"],
             "404.html": copy["missing"]}[section]
     description = esc(seo.meta_desc(desc))
     url = BASE + route(lang, section)
@@ -221,7 +245,7 @@ def llms():
 
 - [Game overview]({BASE}/)
 - [Support and FAQ]({BASE}/support/)
-- [Browser play status]({BASE}/play/)
+- [How to play]({BASE}/play/)
 - [Terms of use]({TERMS})
 - [Privacy policy]({PRIVACY})
 
