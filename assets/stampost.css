@@ -24,6 +24,7 @@ body {
   min-height: 100dvh;
   margin: 0;
 }
+:lang(ko) body { word-break: keep-all; overflow-wrap: break-word; }
 a { color: var(--red); text-underline-offset: .2em; }
 a:focus-visible, select:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
 button { font: inherit; }
@@ -238,7 +239,6 @@ a.action:hover { background: #801c2a; }
 .page-section dt { font-weight: 800; }
 .page-section dd { margin: 0 0 .85rem; color: var(--muted); }
 .page .back { margin-block-start: 1rem; }
-:lang(ko) .page { word-break: keep-all; overflow-wrap: anywhere; }
 .steps { margin: 0; padding-inline-start: 1.4rem; }
 .steps li + li { margin-block-start: .55rem; }
 .score-table {

@@ -1,5 +1,6 @@
 import hashlib
 import json
+import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -109,6 +110,20 @@ class SiteTests(unittest.TestCase):
                             self.assertTrue((path / "index.html").is_file() if target.path.endswith("/") else path.is_file(), target.path)
                             if target.path.startswith("/assets/"):
                                 self.assertTrue(target.query.startswith("v="), target.path)
+
+    def test_layout_css(self):
+        css = (site.ROOT / "assets/stampost.css").read_text(encoding="utf-8")
+        rules = {
+            selector.strip(): " ".join(body.split())
+            for selector, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css)
+        }
+        # footer 하단 고정: body 가 세로 flex, main 이 남는 높이를 채운다
+        self.assertIn("display: flex;", rules["body"])
+        self.assertIn("flex-direction: column;", rules["body"])
+        self.assertIn("min-height: 100dvh;", rules["body"])
+        self.assertIn("flex: 1 0 auto;", rules["main"])
+        # 한국어는 홈을 포함한 모든 페이지에서 낱말 단위로 줄바꿈
+        self.assertIn("word-break: keep-all;", rules[":lang(ko) body"])
 
     def test_retired_languages_are_redirects_only(self):
         mapping = {"ru": "en", "ar": "en", "hi": "en", "zh-Hans": "zh-Hant"}
