@@ -88,6 +88,9 @@ class SiteTests(unittest.TestCase):
                 self.assertEqual(len(copy["rushRules"]), 3)
                 for rule in copy["rushRules"]:
                     self.assertIn(f"<li>{site.esc(rule)}</li>", html)
+                fever_name = site.PLAY_COPY[lang]["fever"].removesuffix(" ×2").casefold()
+                for line in (copy["rushRules"][1], copy["steps"][1], copy["queueA"]):
+                    self.assertIn(fever_name, line.casefold())
                 fever_numbers = set(re.findall(r"\d+", copy["rushRules"][1]))
                 self.assertLessEqual({"18", "6"}, fever_numbers)
                 self.assertLessEqual(fever_numbers, {"18", "6", "2"})

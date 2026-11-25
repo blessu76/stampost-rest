@@ -15,13 +15,13 @@ function storedInt(key) {
   }
 }
 
-function readRecord() {
+export function readRecord() {
   const score = storedInt(BEST_KEY);
   const stars = Math.max(starsFor(score), Math.min(STAR_THRESHOLDS.length, storedInt(STARS_KEY)));
   return { score, stars };
 }
 
-function persistRecord(record) {
+export function persistRecord(record) {
   try {
     if (record.score > storedInt(BEST_KEY)) localStorage.setItem(BEST_KEY, record.score);
     if (record.stars > storedInt(STARS_KEY)) localStorage.setItem(STARS_KEY, record.stars);
@@ -375,4 +375,6 @@ function initGame(root) {
   render();
 }
 
-initGame(document.querySelector('[data-stampost-game]'));
+if (typeof document !== 'undefined') {
+  initGame(document.querySelector('[data-stampost-game]'));
+}

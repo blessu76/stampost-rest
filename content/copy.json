@@ -176,11 +176,11 @@
     "offlineQ": "可以離線遊玩嗎？",
     "offlineA": "可以。手機版支援離線遊玩，也沒有廣告。",
     "queueQ": "為什麼這一局提早結束？",
-    "queueA": "排隊的信件超過 6 封時，郵局就會關門。 熱潮期間只會略過放不下的信件。",
+    "queueA": "排隊的信件超過 6 封時，郵局就會關門。狂熱期間只會略過放不下的信件。",
     "playIntro": "在隊伍塞滿之前，把所有信封分好類。45 秒一局所需的規則都在這裡。",
     "steps": [
       "每局 45 秒。",
-      "信封會在紅色郵筒前排隊。最多可以排 6 封，超過時郵局就會關門，這局結束。 熱潮期間只會略過放不下的信件。",
+      "信封會在紅色郵筒前排隊。最多可以排 6 封，超過時郵局就會關門，這局結束。狂熱期間只會略過放不下的信件。",
       "看隊首信封上的印章，點選顏色和形狀相同的郵筒按鈕：花朵、月亮或星星。",
       "從隊首開始連續相同印章的信封會一起寄出。一次寄出 n 封可得 n(n+1)/2 分。",
       "點錯會扣 2 分。分數不會低於 0。"
@@ -195,7 +195,7 @@
     "missing": "找不到這個頁面。",
     "rushRules": [
       "金色信件可配合任一印章，讓整批得分加倍。從第 4 次連擊起為 ×2，第 8 次起為 ×3。蓋錯印章，或有信件等候達 3.5 秒，連擊就會中斷。",
-      "寄出 18 封即可開啟 6 秒熱潮，得分加倍。佇列滿時只會略過新信件。",
+      "寄出 18 封即可進入狂熱狀態 6 秒，得分加倍。佇列滿時只會略過新信件。",
       "達到 150、300、450 分，各可獲得一顆星。"
     ]
   },
@@ -426,11 +426,11 @@
     "offlineQ": "Bisakah saya bermain offline?",
     "offlineA": "Bisa. Game seluler ini dapat dimainkan secara offline dan tanpa iklan.",
     "queueQ": "Mengapa ronde berakhir lebih awal?",
-    "queueA": "Kantor pos tutup jika antrean melebihi enam surat. Saat Demam, surat yang tidak muat dilewati.",
+    "queueA": "Kantor pos tutup jika antrean melebihi enam surat. Saat Fever, surat yang tidak muat dilewati.",
     "playIntro": "Sortir semua amplop sebelum antrean penuh. Ini semua yang perlu kamu tahu untuk satu ronde 45 detik.",
     "steps": [
       "Setiap ronde berlangsung 45 detik.",
-      "Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir. Saat Demam, surat yang tidak muat dilewati.",
+      "Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir. Saat Fever, surat yang tidak muat dilewati.",
       "Lihat cap pada amplop terdepan, lalu ketuk tombol kotak pos dengan warna dan bentuk yang sama: bunga, bulan, atau bintang.",
       "Semua amplop yang sama dan berurutan di depan terkirim bersamaan. Satu kiriman berisi n amplop bernilai n(n+1)/2 poin.",
       "Salah ketuk mengurangi 2 poin. Skormu tidak pernah turun di bawah 0."
@@ -445,7 +445,7 @@
     "missing": "Halaman ini tidak ditemukan.",
     "rushRules": [
       "Surat emas cocok dengan semua cap dan menggandakan poin kiriman. Mulai cap benar ke-4 berturut-turut, poin ×2, lalu ×3 mulai cap ke-8. Salah cap atau membiarkan surat menunggu 3,5 detik memutus kombo.",
-      "Kirim 18 surat untuk memulai Demam selama 6 detik. Poin digandakan, dan surat baru dilewati jika antrean penuh.",
+      "Kirim 18 surat untuk memulai Fever selama 6 detik. Poin digandakan, dan surat baru dilewati jika antrean penuh.",
       "Raih bintang pada 150, 300, dan 450 poin."
     ]
   },
@@ -526,11 +526,11 @@
     "offlineQ": "Tôi có thể chơi ngoại tuyến không?",
     "offlineA": "Có. Trò chơi trên điện thoại chơi được ngoại tuyến và không có quảng cáo.",
     "queueQ": "Vì sao lượt chơi kết thúc sớm?",
-    "queueA": "Bưu điện đóng cửa nếu hàng chờ vượt quá sáu lá thư. Trong Cơn sốt, thư không còn chỗ sẽ được bỏ qua.",
+    "queueA": "Bưu điện đóng cửa nếu hàng chờ vượt quá sáu lá thư. Trong Cao trào, thư không còn chỗ sẽ được bỏ qua.",
     "playIntro": "Phân loại hết phong bì trước khi hàng chờ bị dồn. Đây là mọi điều bạn cần cho một lượt 45 giây.",
     "steps": [
       "Mỗi lượt kéo dài 45 giây.",
-      "Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc. Trong Cơn sốt, thư không còn chỗ sẽ được bỏ qua.",
+      "Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc. Trong Cao trào, thư không còn chỗ sẽ được bỏ qua.",
       "Xem con dấu trên phong bì đầu hàng, rồi chạm nút hòm thư cùng màu và hình dạng: hoa, trăng hoặc sao.",
       "Mọi phong bì giống nhau nối tiếp ở đầu hàng sẽ được gửi cùng lúc. Một lần gửi n phong bì được n(n+1)/2 điểm.",
       "Chạm sai bị trừ 2 điểm. Điểm của bạn không bao giờ xuống dưới 0."
@@ -545,7 +545,7 @@
     "missing": "Không tìm thấy trang này.",
     "rushRules": [
       "Thư vàng hợp với mọi dấu và nhân đôi điểm cả lô. Từ lần đóng đúng liên tiếp thứ 4 được ×2, từ lần thứ 8 được ×3. Đóng sai hoặc để thư chờ 3,5 giây sẽ ngắt combo.",
-      "Gửi 18 thư để bật Cơn sốt trong 6 giây. Điểm tăng gấp đôi và thư mới được bỏ qua nếu hàng chờ đã đầy.",
+      "Gửi 18 thư để kích hoạt Cao trào trong 6 giây. Điểm tăng gấp đôi và thư mới được bỏ qua nếu hàng chờ đã đầy.",
       "Nhận sao khi đạt 150, 300 và 450 điểm."
     ]
   },
