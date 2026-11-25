@@ -26,11 +26,11 @@
     "offlineQ": "Can I play offline?",
     "offlineA": "Yes. The mobile game works offline and has no ads.",
     "queueQ": "Why did my round end early?",
-    "queueA": "The post office closes when the queue would exceed six letters.",
+    "queueA": "The post office closes when the queue would exceed six letters. During Fever, extra arrivals are skipped.",
     "playIntro": "Sort every envelope before the line backs up. Here is everything you need for a 45-second round.",
     "steps": [
       "Each round lasts 45 seconds.",
-      "Envelopes line up at the red postbox. Up to 6 can wait — if the line overflows, the post office closes and the round ends.",
+      "Envelopes line up at the red postbox. Up to 6 can wait — if the line overflows, the post office closes and the round ends. During Fever, extra arrivals are skipped.",
       "Check the stamp on the first envelope, then tap the postbox button with the same color and shape: flower, moon, or star.",
       "Every matching envelope in a row at the front goes out together. A batch of n envelopes scores n(n+1)/2 points.",
       "A wrong tap costs 2 points. Your score never drops below 0."
@@ -40,9 +40,14 @@
     "points": "Points",
     "wrongTap": "Wrong tap",
     "appTitle": "Getting the app",
-    "appText": "The iOS and Android app is being prepared for TestFlight testing. There is no store link yet, and the game can’t be played in the browser.",
+    "appText": "The iOS and Android app is in testing. Store links will be available at launch.",
     "home": "Game overview",
-    "missing": "This page couldn’t be found."
+    "missing": "This page couldn’t be found.",
+    "rushRules": [
+      "Gold letters match any stamp and double the batch score. The 4th consecutive correct stamp scores ×2 and the 8th scores ×3. A wrong stamp or 3.5 seconds with mail waiting breaks the combo.",
+      "Send 18 letters to start 6 seconds of Fever. Points double and extra arrivals are skipped when the queue is full.",
+      "Earn stars at 150, 300, and 450 points."
+    ]
   },
   "ko": {
     "name": "도장 우체국",
@@ -71,11 +76,11 @@
     "offlineQ": "오프라인에서도 플레이할 수 있나요?",
     "offlineA": "네. 모바일 게임은 오프라인으로 플레이할 수 있고 광고가 없습니다.",
     "queueQ": "왜 한 판이 일찍 끝났나요?",
-    "queueA": "대기줄이 6장을 넘으면 우체국이 닫힙니다.",
+    "queueA": "대기줄이 6장을 넘으면 우체국이 닫힙니다. 피버 중에는 넘치는 우편만 건너뛰어요.",
     "playIntro": "대기줄이 밀리기 전에 봉투를 모두 분류하세요. 45초 한 판에 필요한 것을 모았어요.",
     "steps": [
       "한 판은 45초입니다.",
-      "봉투가 빨간 우체통 앞에 줄을 섭니다. 대기줄에는 6장까지 기다릴 수 있고, 넘치면 우체국이 닫히며 판이 끝나요.",
+      "봉투가 빨간 우체통 앞에 줄을 섭니다. 대기줄에는 6장까지 기다릴 수 있고, 넘치면 우체국이 닫히며 판이 끝나요. 피버 중에는 넘치는 우편만 건너뛰어요.",
       "맨 앞 봉투의 도장을 보고, 같은 색·모양의 우체통 버튼(꽃·달·별)을 탭하세요.",
       "앞에서부터 이어진 같은 도장 봉투가 한 번에 나갑니다. n장을 묶으면 n(n+1)/2점이에요.",
       "잘못 누르면 2점이 깎입니다. 점수는 0점 아래로 내려가지 않아요."
@@ -85,9 +90,14 @@
     "points": "점수",
     "wrongTap": "잘못 누름",
     "appTitle": "앱 소식",
-    "appText": "iOS·Android 앱은 TestFlight 테스트를 준비하고 있어요. 아직 스토어 링크가 없고, 브라우저에서는 플레이할 수 없습니다.",
+    "appText": "iOS·Android 앱은 테스트 중이에요. 스토어 링크는 앱 출시 후에 열립니다.",
     "home": "게임 소개",
-    "missing": "페이지를 찾을 수 없어요."
+    "missing": "페이지를 찾을 수 없어요.",
+    "rushRules": [
+      "황금 편지는 어떤 도장에도 맞고 묶음 점수를 두 배로 올려요. 4콤보부터 ×2, 8콤보부터 ×3입니다. 틀리거나 편지가 대기 중인 채 3.5초가 지나면 콤보가 끊겨요.",
+      "18장을 보내면 6초 동안 피버가 열려요. 점수가 두 배가 되고 대기줄이 가득 차도 넘치는 편지만 건너뛰어요.",
+      "150·300·450점에 별을 하나씩 받아요."
+    ]
   },
   "ja": {
     "name": "Stampost",
@@ -116,11 +126,11 @@
     "offlineQ": "オフラインでも遊べますか？",
     "offlineA": "はい。モバイル版はオフラインで遊べ、広告はありません。",
     "queueQ": "なぜ途中で終了したのですか？",
-    "queueA": "待ち列が6通を超えると郵便局が閉まります。",
+    "queueA": "待ち列が6通を超えると郵便局が閉まります。 フィーバー中は入りきらない手紙だけがスキップされます。",
     "playIntro": "待ち列があふれる前に、封筒をすべて仕分けましょう。45秒の1ラウンドに必要なことをまとめました。",
     "steps": [
       "1ラウンドは45秒です。",
-      "封筒は赤いポストの前に並びます。待てるのは6通まで。あふれると郵便局が閉まり、ラウンド終了です。",
+      "封筒は赤いポストの前に並びます。待てるのは6通まで。あふれると郵便局が閉まり、ラウンド終了です。 フィーバー中は入りきらない手紙だけがスキップされます。",
       "先頭の封筒のスタンプを見て、同じ色と形のポストボタン（花・月・星）をタップします。",
       "先頭から続く同じスタンプの封筒がまとめて出ていきます。n通まとめると n(n+1)/2 点です。",
       "間違えると2点減ります。スコアは0点より下がりません。"
@@ -130,9 +140,14 @@
     "points": "点数",
     "wrongTap": "タップミス",
     "appTitle": "アプリについて",
-    "appText": "iOS・Android アプリは TestFlight でのテストに向けて準備中です。ストアのリンクはまだなく、ブラウザではプレイできません。",
+    "appText": "iOS・Androidアプリはテスト中です。公開後にストアへのリンクをご案内します。",
     "home": "ゲーム紹介",
-    "missing": "ページが見つかりません。"
+    "missing": "ページが見つかりません。",
+    "rushRules": [
+      "金の手紙はどのスタンプにも合い、その束の得点を2倍にします。4コンボから×2、8コンボから×3です。間違えるか、手紙が並んだまま3.5秒経つとコンボが途切れます。",
+      "18通を送ると6秒間のフィーバーが始まります。得点は2倍になり、列が満杯なら新しい手紙だけをスキップします。",
+      "150・300・450点で星を1つずつ獲得できます。"
+    ]
   },
   "zh-Hant": {
     "name": "Stampost",
@@ -161,11 +176,11 @@
     "offlineQ": "可以離線遊玩嗎？",
     "offlineA": "可以。手機版支援離線遊玩，也沒有廣告。",
     "queueQ": "為什麼這一局提早結束？",
-    "queueA": "排隊的信件超過 6 封時，郵局就會關門。",
+    "queueA": "排隊的信件超過 6 封時，郵局就會關門。 熱潮期間只會略過放不下的信件。",
     "playIntro": "在隊伍塞滿之前，把所有信封分好類。45 秒一局所需的規則都在這裡。",
     "steps": [
       "每局 45 秒。",
-      "信封會在紅色郵筒前排隊。最多可以排 6 封，超過時郵局就會關門，這局結束。",
+      "信封會在紅色郵筒前排隊。最多可以排 6 封，超過時郵局就會關門，這局結束。 熱潮期間只會略過放不下的信件。",
       "看隊首信封上的印章，點選顏色和形狀相同的郵筒按鈕：花朵、月亮或星星。",
       "從隊首開始連續相同印章的信封會一起寄出。一次寄出 n 封可得 n(n+1)/2 分。",
       "點錯會扣 2 分。分數不會低於 0。"
@@ -175,9 +190,14 @@
     "points": "分數",
     "wrongTap": "點錯",
     "appTitle": "App 動態",
-    "appText": "iOS 和 Android App 正在準備 TestFlight 測試。目前還沒有商店連結，也無法在瀏覽器中遊玩。",
+    "appText": "iOS 和 Android 版正在測試中，正式推出後將提供商店連結。",
     "home": "遊戲介紹",
-    "missing": "找不到這個頁面。"
+    "missing": "找不到這個頁面。",
+    "rushRules": [
+      "金色信件可配合任一印章，讓整批得分加倍。從第 4 次連擊起為 ×2，第 8 次起為 ×3。蓋錯印章，或有信件等候達 3.5 秒，連擊就會中斷。",
+      "寄出 18 封即可開啟 6 秒熱潮，得分加倍。佇列滿時只會略過新信件。",
+      "達到 150、300、450 分，各可獲得一顆星。"
+    ]
   },
   "es": {
     "name": "Stampost",
@@ -206,11 +226,11 @@
     "offlineQ": "¿Puedo jugar sin conexión?",
     "offlineA": "Sí. El juego para móviles funciona sin conexión y no tiene anuncios.",
     "queueQ": "¿Por qué terminó antes mi partida?",
-    "queueA": "La oficina de correos cierra si la fila supera las seis cartas.",
+    "queueA": "La oficina de correos cierra si la fila supera las seis cartas. Durante la fiebre se omiten los sobres que no caben.",
     "playIntro": "Clasifica cada sobre antes de que la fila se llene. Aquí tienes todo lo necesario para una partida de 45 segundos.",
     "steps": [
       "Cada partida dura 45 segundos.",
-      "Los sobres hacen fila frente al buzón rojo. Pueden esperar hasta 6; si la fila se desborda, la oficina de correos cierra y la partida termina.",
+      "Los sobres hacen fila frente al buzón rojo. Pueden esperar hasta 6; si la fila se desborda, la oficina de correos cierra y la partida termina. Durante la fiebre se omiten los sobres que no caben.",
       "Mira el sello del primer sobre y toca el botón del buzón con el mismo color y forma: flor, luna o estrella.",
       "Todos los sobres iguales seguidos al frente salen juntos. Un lote de n sobres suma n(n+1)/2 puntos.",
       "Un toque equivocado resta 2 puntos. Tu puntuación nunca baja de 0."
@@ -220,9 +240,14 @@
     "points": "Puntos",
     "wrongTap": "Toque equivocado",
     "appTitle": "Sobre la app",
-    "appText": "La app para iOS y Android se está preparando para pruebas en TestFlight. Aún no hay enlace de tienda y el juego no se puede jugar en el navegador.",
+    "appText": "La aplicación para iOS y Android está en pruebas. Los enlaces a las tiendas estarán disponibles en el lanzamiento.",
     "home": "Sobre el juego",
-    "missing": "No encontramos esta página."
+    "missing": "No encontramos esta página.",
+    "rushRules": [
+      "La carta dorada combina con cualquier sello y duplica los puntos del lote. A partir del 4.º acierto seguido, ×2, y del 8.º, ×3. Un error o 3,5 segundos con cartas en espera cortan el combo.",
+      "Envía 18 cartas para activar 6 segundos de fiebre. Los puntos se duplican y, si la fila está llena, se omiten las nuevas cartas.",
+      "Gana estrellas al alcanzar 150, 300 y 450 puntos."
+    ]
   },
   "pt-BR": {
     "name": "Stampost",
@@ -251,11 +276,11 @@
     "offlineQ": "Posso jogar offline?",
     "offlineA": "Sim. O jogo para celular funciona offline e não tem anúncios.",
     "queueQ": "Por que minha rodada terminou antes da hora?",
-    "queueA": "O correio fecha se a fila passar de seis cartas.",
+    "queueA": "O correio fecha se a fila passar de seis cartas. Durante a febre, só as cartas que não cabem são ignoradas.",
     "playIntro": "Separe todos os envelopes antes que a fila encha. Aqui está tudo o que você precisa para uma rodada de 45 segundos.",
     "steps": [
       "Cada rodada dura 45 segundos.",
-      "Os envelopes fazem fila diante da caixa de correio vermelha. Até 6 podem esperar; se a fila transbordar, o correio fecha e a rodada termina.",
+      "Os envelopes fazem fila diante da caixa de correio vermelha. Até 6 podem esperar; se a fila transbordar, o correio fecha e a rodada termina. Durante a febre, só as cartas que não cabem são ignoradas.",
       "Veja o carimbo do primeiro envelope e toque no botão da caixa de correio com a mesma cor e forma: flor, lua ou estrela.",
       "Todos os envelopes iguais em sequência na frente saem juntos. Um lote de n envelopes vale n(n+1)/2 pontos.",
       "Um toque errado tira 2 pontos. Sua pontuação nunca fica abaixo de 0."
@@ -265,9 +290,14 @@
     "points": "Pontos",
     "wrongTap": "Toque errado",
     "appTitle": "Sobre o app",
-    "appText": "O app para iOS e Android está sendo preparado para testes no TestFlight. Ainda não há link da loja, e o jogo não pode ser jogado no navegador.",
+    "appText": "O aplicativo para iOS e Android está em testes. Os links das lojas estarão disponíveis no lançamento.",
     "home": "Sobre o jogo",
-    "missing": "Não encontramos esta página."
+    "missing": "Não encontramos esta página.",
+    "rushRules": [
+      "A carta dourada combina com qualquer selo e dobra os pontos do lote. A partir do 4º acerto seguido, ×2, e do 8º, ×3. Um erro ou 3,5 segundos com cartas na fila interrompem o combo.",
+      "Envie 18 cartas para ativar 6 segundos de febre. Os pontos dobram e, se a fila estiver cheia, as novas cartas são ignoradas.",
+      "Ganhe estrelas ao atingir 150, 300 e 450 pontos."
+    ]
   },
   "fr": {
     "name": "Stampost",
@@ -296,11 +326,11 @@
     "offlineQ": "Puis-je jouer hors connexion ?",
     "offlineA": "Oui. Le jeu mobile fonctionne hors connexion et sans publicité.",
     "queueQ": "Pourquoi ma partie s’est-elle terminée trop tôt ?",
-    "queueA": "Le bureau de poste ferme si la file dépasse six lettres.",
+    "queueA": "Le bureau de poste ferme si la file dépasse six lettres. En mode fièvre, les plis qui n’entrent pas sont ignorés.",
     "playIntro": "Triez chaque enveloppe avant que la file ne déborde. Voici tout ce qu’il faut savoir pour une partie de 45 secondes.",
     "steps": [
       "Chaque partie dure 45 secondes.",
-      "Les enveloppes font la queue devant la boîte aux lettres rouge. 6 peuvent attendre au maximum ; si la file déborde, le bureau de poste ferme et la partie s’arrête.",
+      "Les enveloppes font la queue devant la boîte aux lettres rouge. 6 peuvent attendre au maximum ; si la file déborde, le bureau de poste ferme et la partie s’arrête. En mode fièvre, les plis qui n’entrent pas sont ignorés.",
       "Regardez le tampon de la première enveloppe, puis touchez le bouton de la boîte aux lettres de même couleur et de même forme : fleur, lune ou étoile.",
       "Toutes les enveloppes identiques qui se suivent en tête partent ensemble. Un lot de n enveloppes rapporte n(n+1)/2 points.",
       "Une erreur coûte 2 points. Votre score ne descend jamais sous 0."
@@ -310,9 +340,14 @@
     "points": "Points",
     "wrongTap": "Mauvais choix",
     "appTitle": "L’application",
-    "appText": "L’application iOS et Android est en préparation pour des tests sur TestFlight. Il n’y a pas encore de lien vers les stores, et le jeu n’est pas jouable dans le navigateur.",
+    "appText": "L’application iOS et Android est en cours de test. Les liens des boutiques seront disponibles à sa sortie.",
     "home": "Présentation du jeu",
-    "missing": "Cette page est introuvable."
+    "missing": "Cette page est introuvable.",
+    "rushRules": [
+      "La lettre dorée va avec tous les tampons et double les points du lot. Dès la 4e réussite de suite, ×2, puis ×3 dès la 8e. Une erreur ou 3,5 secondes avec du courrier en attente brisent le combo.",
+      "Envoyez 18 lettres pour déclencher 6 secondes de fièvre. Les points doublent et, si la file est pleine, les nouvelles lettres sont ignorées.",
+      "Gagnez une étoile à 150, 300 et 450 points."
+    ]
   },
   "de": {
     "name": "Stampost",
@@ -341,11 +376,11 @@
     "offlineQ": "Kann ich offline spielen?",
     "offlineA": "Ja. Das Handyspiel funktioniert offline und ist werbefrei.",
     "queueQ": "Warum war meine Runde vorzeitig vorbei?",
-    "queueA": "Die Post schließt, sobald mehr als sechs Briefe warten.",
+    "queueA": "Die Post schließt, sobald mehr als sechs Briefe warten. Im Fieber werden überzählige Briefe übersprungen.",
     "playIntro": "Sortiere jeden Umschlag, bevor sich die Schlange staut. Hier steht alles, was du für eine 45-Sekunden-Runde brauchst.",
     "steps": [
       "Eine Runde dauert 45 Sekunden.",
-      "Die Umschläge stellen sich am roten Briefkasten an. Bis zu 6 dürfen warten – läuft die Schlange über, schließt die Post und die Runde endet.",
+      "Die Umschläge stellen sich am roten Briefkasten an. Bis zu 6 dürfen warten – läuft die Schlange über, schließt die Post und die Runde endet. Im Fieber werden überzählige Briefe übersprungen.",
       "Sieh dir den Stempel auf dem vordersten Umschlag an und tippe auf die Briefkasten-Taste mit derselben Farbe und Form: Blume, Mond oder Stern.",
       "Alle passenden Umschläge, die vorne aufeinanderfolgen, gehen zusammen raus. Ein Stapel aus n Umschlägen bringt n(n+1)/2 Punkte.",
       "Ein falscher Tipp kostet 2 Punkte. Dein Punktestand fällt nie unter 0."
@@ -355,9 +390,14 @@
     "points": "Punkte",
     "wrongTap": "Falscher Tipp",
     "appTitle": "Zur App",
-    "appText": "Die App für iOS und Android wird gerade für Tests über TestFlight vorbereitet. Einen Store-Link gibt es noch nicht, und im Browser lässt sich das Spiel nicht spielen.",
+    "appText": "Die App für iOS und Android wird getestet. Die Store-Links folgen zur Veröffentlichung.",
     "home": "Spielübersicht",
-    "missing": "Diese Seite wurde nicht gefunden."
+    "missing": "Diese Seite wurde nicht gefunden.",
+    "rushRules": [
+      "Goldene Briefe passen zu jedem Stempel und verdoppeln die Punkte des Stapels. Ab dem 4. richtigen Stempel in Folge gilt ×2, ab dem 8. ×3. Ein Fehler oder 3,5 Sekunden mit wartenden Briefen beenden die Kombo.",
+      "Verschicke 18 Briefe für 6 Sekunden Fieber. Die Punkte zählen doppelt und bei voller Schlange werden neue Briefe übersprungen.",
+      "Sterne gibt es bei 150, 300 und 450 Punkten."
+    ]
   },
   "id": {
     "name": "Stampost",
@@ -386,11 +426,11 @@
     "offlineQ": "Bisakah saya bermain offline?",
     "offlineA": "Bisa. Game seluler ini dapat dimainkan secara offline dan tanpa iklan.",
     "queueQ": "Mengapa ronde berakhir lebih awal?",
-    "queueA": "Kantor pos tutup jika antrean melebihi enam surat.",
+    "queueA": "Kantor pos tutup jika antrean melebihi enam surat. Saat Demam, surat yang tidak muat dilewati.",
     "playIntro": "Sortir semua amplop sebelum antrean penuh. Ini semua yang perlu kamu tahu untuk satu ronde 45 detik.",
     "steps": [
       "Setiap ronde berlangsung 45 detik.",
-      "Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir.",
+      "Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir. Saat Demam, surat yang tidak muat dilewati.",
       "Lihat cap pada amplop terdepan, lalu ketuk tombol kotak pos dengan warna dan bentuk yang sama: bunga, bulan, atau bintang.",
       "Semua amplop yang sama dan berurutan di depan terkirim bersamaan. Satu kiriman berisi n amplop bernilai n(n+1)/2 poin.",
       "Salah ketuk mengurangi 2 poin. Skormu tidak pernah turun di bawah 0."
@@ -400,9 +440,14 @@
     "points": "Poin",
     "wrongTap": "Salah ketuk",
     "appTitle": "Tentang aplikasi",
-    "appText": "Aplikasi iOS dan Android sedang disiapkan untuk pengujian TestFlight. Belum ada tautan toko, dan game ini tidak bisa dimainkan di browser.",
+    "appText": "Aplikasi iOS dan Android sedang diuji. Tautan toko tersedia saat aplikasi dirilis.",
     "home": "Tentang game",
-    "missing": "Halaman ini tidak ditemukan."
+    "missing": "Halaman ini tidak ditemukan.",
+    "rushRules": [
+      "Surat emas cocok dengan semua cap dan menggandakan poin kiriman. Mulai cap benar ke-4 berturut-turut, poin ×2, lalu ×3 mulai cap ke-8. Salah cap atau membiarkan surat menunggu 3,5 detik memutus kombo.",
+      "Kirim 18 surat untuk memulai Demam selama 6 detik. Poin digandakan, dan surat baru dilewati jika antrean penuh.",
+      "Raih bintang pada 150, 300, dan 450 poin."
+    ]
   },
   "th": {
     "name": "Stampost",
@@ -431,11 +476,11 @@
     "offlineQ": "เล่นแบบออฟไลน์ได้ไหม",
     "offlineA": "ได้ เกมมือถือเล่นได้แบบออฟไลน์และไม่มีโฆษณา",
     "queueQ": "ทำไมรอบจบก่อนเวลา",
-    "queueA": "ไปรษณีย์จะปิดเมื่อมีจดหมายต่อแถวเกินหกซอง",
+    "queueA": "ไปรษณีย์จะปิดเมื่อมีจดหมายต่อแถวเกินหกซอง ช่วงฟีเวอร์จะข้ามเฉพาะจดหมายที่เข้าคิวไม่ได้",
     "playIntro": "คัดแยกซองจดหมายให้หมดก่อนแถวจะล้น นี่คือทุกอย่างที่ต้องรู้สำหรับการเล่นรอบละ 45 วินาที",
     "steps": [
       "แต่ละรอบใช้เวลา 45 วินาที",
-      "ซองจดหมายจะต่อแถวหน้าตู้ไปรษณีย์สีแดง รอได้สูงสุด 6 ซอง ถ้าแถวล้น ไปรษณีย์จะปิดและจบรอบ",
+      "ซองจดหมายจะต่อแถวหน้าตู้ไปรษณีย์สีแดง รอได้สูงสุด 6 ซอง ถ้าแถวล้น ไปรษณีย์จะปิดและจบรอบ ช่วงฟีเวอร์จะข้ามเฉพาะจดหมายที่เข้าคิวไม่ได้",
       "ดูตราประทับบนซองแรก แล้วแตะปุ่มตู้ไปรษณีย์ที่มีสีและรูปทรงเดียวกัน: ดอกไม้ พระจันทร์ หรือดาว",
       "ซองที่ตราเหมือนกันและเรียงต่อกันจากหน้าแถวจะถูกส่งออกพร้อมกัน ส่ง n ซองในครั้งเดียวได้ n(n+1)/2 คะแนน",
       "แตะผิดจะเสีย 2 คะแนน คะแนนจะไม่ต่ำกว่า 0"
@@ -445,9 +490,14 @@
     "points": "คะแนน",
     "wrongTap": "แตะผิด",
     "appTitle": "เกี่ยวกับแอป",
-    "appText": "แอป iOS และ Android กำลังเตรียมทดสอบผ่าน TestFlight ตอนนี้ยังไม่มีลิงก์สโตร์ และยังเล่นในเบราว์เซอร์ไม่ได้",
+    "appText": "แอป iOS และ Android อยู่ระหว่างทดสอบ ลิงก์สโตร์จะพร้อมเมื่อเปิดตัวแอป",
     "home": "แนะนำเกม",
-    "missing": "ไม่พบหน้านี้"
+    "missing": "ไม่พบหน้านี้",
+    "rushRules": [
+      "จดหมายทองเข้ากับทุกตราและเพิ่มคะแนนทั้งชุดเป็นสองเท่า กดถูกติดกันตั้งแต่ครั้งที่ 4 ได้ ×2 ตั้งแต่ครั้งที่ 8 ได้ ×3 คอมโบจะขาดเมื่อกดผิดหรือมีจดหมายรอนาน 3.5 วินาที",
+      "ส่ง 18 ซองเพื่อเปิดฟีเวอร์ 6 วินาที คะแนนจะเพิ่มเป็นสองเท่า และจะข้ามจดหมายใหม่เมื่อคิวเต็ม",
+      "รับดาวเมื่อถึง 150, 300 และ 450 คะแนน"
+    ]
   },
   "vi": {
     "name": "Stampost",
@@ -476,11 +526,11 @@
     "offlineQ": "Tôi có thể chơi ngoại tuyến không?",
     "offlineA": "Có. Trò chơi trên điện thoại chơi được ngoại tuyến và không có quảng cáo.",
     "queueQ": "Vì sao lượt chơi kết thúc sớm?",
-    "queueA": "Bưu điện đóng cửa nếu hàng chờ vượt quá sáu lá thư.",
+    "queueA": "Bưu điện đóng cửa nếu hàng chờ vượt quá sáu lá thư. Trong Cơn sốt, thư không còn chỗ sẽ được bỏ qua.",
     "playIntro": "Phân loại hết phong bì trước khi hàng chờ bị dồn. Đây là mọi điều bạn cần cho một lượt 45 giây.",
     "steps": [
       "Mỗi lượt kéo dài 45 giây.",
-      "Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc.",
+      "Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc. Trong Cơn sốt, thư không còn chỗ sẽ được bỏ qua.",
       "Xem con dấu trên phong bì đầu hàng, rồi chạm nút hòm thư cùng màu và hình dạng: hoa, trăng hoặc sao.",
       "Mọi phong bì giống nhau nối tiếp ở đầu hàng sẽ được gửi cùng lúc. Một lần gửi n phong bì được n(n+1)/2 điểm.",
       "Chạm sai bị trừ 2 điểm. Điểm của bạn không bao giờ xuống dưới 0."
@@ -490,9 +540,14 @@
     "points": "Điểm",
     "wrongTap": "Chạm sai",
     "appTitle": "Về ứng dụng",
-    "appText": "Ứng dụng iOS và Android đang được chuẩn bị để thử nghiệm qua TestFlight. Hiện chưa có liên kết cửa hàng và chưa thể chơi trên trình duyệt.",
+    "appText": "Ứng dụng iOS và Android đang được thử nghiệm. Liên kết cửa hàng sẽ có khi ứng dụng ra mắt.",
     "home": "Giới thiệu trò chơi",
-    "missing": "Không tìm thấy trang này."
+    "missing": "Không tìm thấy trang này.",
+    "rushRules": [
+      "Thư vàng hợp với mọi dấu và nhân đôi điểm cả lô. Từ lần đóng đúng liên tiếp thứ 4 được ×2, từ lần thứ 8 được ×3. Đóng sai hoặc để thư chờ 3,5 giây sẽ ngắt combo.",
+      "Gửi 18 thư để bật Cơn sốt trong 6 giây. Điểm tăng gấp đôi và thư mới được bỏ qua nếu hàng chờ đã đầy.",
+      "Nhận sao khi đạt 150, 300 và 450 điểm."
+    ]
   },
   "tr": {
     "name": "Stampost",
@@ -521,11 +576,11 @@
     "offlineQ": "Çevrimdışı oynayabilir miyim?",
     "offlineA": "Evet. Mobil oyun çevrimdışı çalışır ve reklam içermez.",
     "queueQ": "Turum neden erken bitti?",
-    "queueA": "Sıra altı mektubu aşarsa postane kapanır.",
+    "queueA": "Sıra altı mektubu aşarsa postane kapanır. Ateş modunda sıraya sığmayan mektuplar atlanır.",
     "playIntro": "Sıra dolmadan her zarfı ayır. 45 saniyelik bir tur için bilmen gereken her şey burada.",
     "steps": [
       "Her tur 45 saniye sürer.",
-      "Zarflar kırmızı posta kutusunun önünde sıraya girer. En fazla 6 zarf bekleyebilir; sıra taşarsa postane kapanır ve tur biter.",
+      "Zarflar kırmızı posta kutusunun önünde sıraya girer. En fazla 6 zarf bekleyebilir; sıra taşarsa postane kapanır ve tur biter. Ateş modunda sıraya sığmayan mektuplar atlanır.",
       "En öndeki zarfın damgasına bak, ardından aynı renk ve şekildeki posta kutusu düğmesine dokun: çiçek, ay veya yıldız.",
       "Öndeki ardışık aynı zarfların hepsi birlikte gönderilir. n zarflık bir paket n(n+1)/2 puan getirir.",
       "Yanlış dokunuş 2 puan kaybettirir. Puanın asla 0’ın altına düşmez."
@@ -535,8 +590,13 @@
     "points": "Puan",
     "wrongTap": "Yanlış dokunuş",
     "appTitle": "Uygulama hakkında",
-    "appText": "iOS ve Android uygulaması TestFlight testleri için hazırlanıyor. Henüz mağaza bağlantısı yok ve oyun tarayıcıda oynanamıyor.",
+    "appText": "iOS ve Android uygulaması test ediliyor. Mağaza bağlantıları uygulama çıktığında açılacak.",
     "home": "Oyun hakkında",
-    "missing": "Sayfa bulunamadı."
+    "missing": "Sayfa bulunamadı.",
+    "rushRules": [
+      "Altın mektup her damgaya uyar ve destenin puanını ikiye katlar. Art arda 4. doğru damgadan itibaren ×2, 8. damgadan itibaren ×3 puan kazanırsın. Yanlış damga veya mektupların 3,5 saniye beklemesi komboyu bozar.",
+      "18 mektup gönderince 6 saniyelik Ateş modu başlar. Puanlar ikiye katlanır ve sıra doluysa yeni mektuplar atlanır.",
+      "150, 300 ve 450 puanda birer yıldız kazanırsın."
+    ]
   }
 }

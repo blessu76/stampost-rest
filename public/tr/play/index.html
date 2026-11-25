@@ -28,11 +28,13 @@
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
 <link rel="stylesheet" href="/assets/stampost.css?v=9d5cd6e013">
+<link rel="stylesheet" href="/assets/stampost-play.css?v=509d6feffb">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
+<script type="module" src="/assets/stampost-play.mjs?v=ea0175dc17"></script>
 </head>
-<body>
+<body class="play-page">
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="/tr/"><span class="brand-mark" aria-hidden="true">✉</span>Stampost</a>
@@ -40,22 +42,161 @@
   </div>
 </header>
 <main>
-<section class="page wrap">
-  <h1>Nasıl oynanır?</h1>
+<section class="game wrap" data-stampost-game aria-labelledby="game-title">
+  <h1 class="game-sr" id="game-title">Stampost</h1>
+  <div class="game-hud"><div class="game-stat">
+      <span id="game-time-label">Süre</span>
+      <div><strong data-part="time"></strong></div>
+      <progress data-part="timeMeter" aria-labelledby="game-time-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-score-label">Puan</span>
+      <div><strong data-part="score"></strong></div>
+      <progress data-part="scoreMeter" aria-labelledby="game-score-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-best-label">En iyi</span>
+      <div><strong data-part="best"></strong><span class="game-stars" data-part="bestStars"></span></div>
+      <progress data-part="bestMeter" aria-labelledby="game-best-label" max="1" value="0"></progress>
+    </div></div>
+  <div class="game-combo">
+    <div class="game-combo-slots" data-part="comboSlots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <strong data-part="combo"></strong>
+    <span class="game-combo-time" data-part="comboTime" hidden aria-hidden="true"></span>
+  </div>
+  <div class="game-stage" role="group" aria-label="Kırmızı posta kutusu">
+    <img class="game-mailbox" src="/assets/design/mailbox.svg?v=c33435558d" width="137" height="123" alt="">
+    <div class="game-intake">
+      <small data-part="intakeLabel">Şimdi gönderirsen</small>
+      <strong data-part="intakeTitle"></strong>
+      <span data-part="intakeDetail"></span>
+      <span class="game-new-best" data-part="newBest" hidden>Yeni rekor!</span>
+    </div>
+    <div class="game-next" data-part="next">
+      <b id="game-next-label">Sıradaki</b>
+      <ol aria-labelledby="game-next-label"><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li></ol>
+    </div>
+  </div>
+  <div class="game-desk" role="group" aria-label="Ayırma masası">
+    <div class="game-queue-head">
+      <strong>Sıra</strong>
+      <div class="game-queue-counts" data-part="queueCounts" aria-hidden="true">
+        <span><img src="/assets/design/flower.svg?v=5327589855" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/moon.svg?v=e06173ec34" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/star.svg?v=ce69b847e0" width="12" height="12" alt=""><b>0</b></span>
+      </div>
+      <span class="game-capacity" data-part="capacity"></span>
+    </div>
+    <div class="game-belt" data-part="belt">
+      <progress class="game-arrival" data-part="arrival" max="1" value="0" aria-label="Sıradaki"></progress>
+      <ol class="game-queue" data-part="queue" aria-label="Mektup sırası"><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+1</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+3</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+6</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+10</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+15</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+21</span>
+      </li></ol>
+      <span class="game-rail" aria-hidden="true"></span>
+      <div class="game-imprint" data-part="imprint" aria-hidden="true"></div>
+      <output class="game-popup" data-part="popup" aria-hidden="true" aria-live="off" hidden></output>
+    </div>
+    <div class="game-rating" data-part="rating" hidden>
+      <span class="game-stars" data-part="resultStars"></span>
+      <span data-part="nextStar"></span>
+      <span data-part="bestCombo"></span>
+    </div>
+    <p class="game-instructions" data-part="instructions">Öndeki mektupla aynı damgaya dokun.</p>
+    <div class="game-stamps" role="group" aria-label="Damga seç"><button class="stamp game-stamp" type="button" data-stamp="flower" disabled>
+      <img src="/assets/design/flower.svg?v=5327589855" width="24" height="24" alt=""><span>Çiçek</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="moon" disabled>
+      <img src="/assets/design/moon.svg?v=e06173ec34" width="24" height="24" alt=""><span>Ay</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="star" disabled>
+      <img src="/assets/design/star.svg?v=ce69b847e0" width="24" height="24" alt=""><span>Yıldız</span><b data-count aria-hidden="true">0</b>
+    </button></div>
+    <div class="game-actions">
+      <button type="button" class="action game-start" data-part="start" disabled>Başla</button>
+      <p class="game-marker" data-part="marker" hidden></p>
+      <button type="button" class="game-pause" data-part="pause" hidden>Duraklat</button>
+    </div>
+    <div class="game-totals">
+      <span><i aria-hidden="true">✉</i><b data-part="delivered"></b></span>
+      <span><i aria-hidden="true">▤</i><b data-part="longest"></b></span>
+      <a href="#rules">Nasıl oynanır?</a>
+    </div>
+  </div>
+  <div class="game-sr" data-part="announcement" role="status"></div>
+  <script type="application/json" data-play-copy>{"pause": "Duraklat", "timeLeft": "Süre", "seconds": "{n} sn", "score": "Puan", "best": "En iyi", "sceneLabel": "Kırmızı posta kutusu", "workbenchLabel": "Ayırma masası", "beltLabel": "Mektup sırası", "stampRowLabel": "Damga seç", "queue": "Sıra", "capacity": "{n}/{max}", "capacityFull": "Dolu · {n}/{max}", "intakeNow": "Şimdi gönderirsen", "intakeBatch": "{n} × {stamp}", "points": "+{n} puan", "pausedTitle": "Duraklatıldı", "idleTitle": "Bekleniyor", "idleDetail": "Sıradaki mektup geliyor", "endOverflow": "Sıra doldu", "endTime": "45 saniye tamam", "resultScore": "{n} puan", "delivered": "{n} mektup gönderildi", "longest": "En büyük deste {n}", "newBest": "Yeni rekor!", "start": "Başla", "again": "Bir tur daha", "resumeDelivery": "Dağıtmaya devam", "instructions": "Öndeki mektupla aynı damgaya dokun.", "instructionsEnded": "Farklı bir damga ritmi dene.", "markerIntro": "Altın mektuplar her gruba uyar. Kombo için göndermeye devam et!", "markerWaiting": "Sıradaki mektup bekleniyor.", "markerSent": "{n} mektup gönderildi · +{score} puan", "markerMiss": "Yanlış damga · en fazla −2 puan", "markerResumed": "Dağıtıma devam.", "stampFlower": "Çiçek", "stampMoon": "Ay", "stampStar": "Yıldız", "stampButton": "{stamp} damgası", "parcelFront": "Önde, {stamp} mektubu", "parcel": "{stamp} mektubu", "parcelEmpty": "Boş", "upcomingLabel": "Sıradaki", "comboCount": "{n} kombo", "fever": "Ateş ×2", "goldLetter": "Altın mektup · her damgayla eşleşir", "nextStar": "Sonraki yıldıza {n} puan", "bestCombo": "En iyi kombo {n}", "help": "Nasıl oynanır?"}</script>
+</section>
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">Nasıl oynanır?</h2>
   <p class="intro">Sıra dolmadan her zarfı ayır. 45 saniyelik bir tur için bilmen gereken her şey burada.</p>
   <section class="page-section">
-    <ol class="steps"><li>Her tur 45 saniye sürer.</li><li>Zarflar kırmızı posta kutusunun önünde sıraya girer. En fazla 6 zarf bekleyebilir; sıra taşarsa postane kapanır ve tur biter.</li><li>En öndeki zarfın damgasına bak, ardından aynı renk ve şekildeki posta kutusu düğmesine dokun: çiçek, ay veya yıldız.</li><li>Öndeki ardışık aynı zarfların hepsi birlikte gönderilir. n zarflık bir paket n(n+1)/2 puan getirir.</li><li>Yanlış dokunuş 2 puan kaybettirir. Puanın asla 0’ın altına düşmez.</li></ol>
+    <ol class="steps"><li>Her tur 45 saniye sürer.</li><li>Zarflar kırmızı posta kutusunun önünde sıraya girer. En fazla 6 zarf bekleyebilir; sıra taşarsa postane kapanır ve tur biter. Ateş modunda sıraya sığmayan mektuplar atlanır.</li><li>En öndeki zarfın damgasına bak, ardından aynı renk ve şekildeki posta kutusu düğmesine dokun: çiçek, ay veya yıldız.</li><li>Öndeki ardışık aynı zarfların hepsi birlikte gönderilir. n zarflık bir paket n(n+1)/2 puan getirir.</li><li>Yanlış dokunuş 2 puan kaybettirir. Puanın asla 0’ın altına düşmez.</li></ol>
+    <ul class="steps rush-rules"><li>Altın mektup her damgaya uyar ve destenin puanını ikiye katlar. Art arda 4. doğru damgadan itibaren ×2, 8. damgadan itibaren ×3 puan kazanırsın. Yanlış damga veya mektupların 3,5 saniye beklemesi komboyu bozar.</li><li>18 mektup gönderince 6 saniyelik Ateş modu başlar. Puanlar ikiye katlanır ve sıra doluysa yeni mektuplar atlanır.</li><li>150, 300 ve 450 puanda birer yıldız kazanırsın.</li></ul>
   </section>
   <section class="page-section">
     <h2>Puanlama</h2>
     <table class="score-table">
       <thead><tr><th scope="col">Bir paketteki zarf</th><th scope="col">Puan</th></tr></thead>
-      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr class="penalty"><td>Yanlış dokunuş</td><td>−2</td></tr></tbody>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr><td>6</td><td>+21</td></tr><tr class="penalty"><td>Yanlış dokunuş</td><td>−2</td></tr></tbody>
     </table>
   </section>
   <section class="page-section">
     <h2>Uygulama hakkında</h2>
-    <p>iOS ve Android uygulaması TestFlight testleri için hazırlanıyor. Henüz mağaza bağlantısı yok ve oyun tarayıcıda oynanamıyor.</p>
+    <p>iOS ve Android uygulaması test ediliyor. Mağaza bağlantıları uygulama çıktığında açılacak.</p>
   </section>
   <a class="back" href="/tr/">Oyun hakkında</a>
 </section>
@@ -63,7 +204,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-links"><a href="https://ipe.rest/legal/">Kullanım koşulları</a><a href="https://ipe.rest/privacy/">Gizlilik politikası</a></div>
-    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (1)</span></p>
+    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (4)</span></p>
   </div>
 </footer>
 </body>

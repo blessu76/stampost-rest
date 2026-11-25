@@ -28,11 +28,13 @@
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
 <link rel="stylesheet" href="/assets/stampost.css?v=9d5cd6e013">
+<link rel="stylesheet" href="/assets/stampost-play.css?v=509d6feffb">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
+<script type="module" src="/assets/stampost-play.mjs?v=ea0175dc17"></script>
 </head>
-<body>
+<body class="play-page">
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="/id/"><span class="brand-mark" aria-hidden="true">✉</span>Stampost</a>
@@ -40,22 +42,161 @@
   </div>
 </header>
 <main>
-<section class="page wrap">
-  <h1>Cara bermain</h1>
+<section class="game wrap" data-stampost-game aria-labelledby="game-title">
+  <h1 class="game-sr" id="game-title">Stampost</h1>
+  <div class="game-hud"><div class="game-stat">
+      <span id="game-time-label">Waktu</span>
+      <div><strong data-part="time"></strong></div>
+      <progress data-part="timeMeter" aria-labelledby="game-time-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-score-label">Skor</span>
+      <div><strong data-part="score"></strong></div>
+      <progress data-part="scoreMeter" aria-labelledby="game-score-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-best-label">Terbaik</span>
+      <div><strong data-part="best"></strong><span class="game-stars" data-part="bestStars"></span></div>
+      <progress data-part="bestMeter" aria-labelledby="game-best-label" max="1" value="0"></progress>
+    </div></div>
+  <div class="game-combo">
+    <div class="game-combo-slots" data-part="comboSlots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <strong data-part="combo"></strong>
+    <span class="game-combo-time" data-part="comboTime" hidden aria-hidden="true"></span>
+  </div>
+  <div class="game-stage" role="group" aria-label="Kotak pos merah">
+    <img class="game-mailbox" src="/assets/design/mailbox.svg?v=c33435558d" width="137" height="123" alt="">
+    <div class="game-intake">
+      <small data-part="intakeLabel">Kirim sekarang</small>
+      <strong data-part="intakeTitle"></strong>
+      <span data-part="intakeDetail"></span>
+      <span class="game-new-best" data-part="newBest" hidden>Rekor baru!</span>
+    </div>
+    <div class="game-next" data-part="next">
+      <b id="game-next-label">Berikutnya</b>
+      <ol aria-labelledby="game-next-label"><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li></ol>
+    </div>
+  </div>
+  <div class="game-desk" role="group" aria-label="Meja sortir">
+    <div class="game-queue-head">
+      <strong>Antrean</strong>
+      <div class="game-queue-counts" data-part="queueCounts" aria-hidden="true">
+        <span><img src="/assets/design/flower.svg?v=5327589855" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/moon.svg?v=e06173ec34" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/star.svg?v=ce69b847e0" width="12" height="12" alt=""><b>0</b></span>
+      </div>
+      <span class="game-capacity" data-part="capacity"></span>
+    </div>
+    <div class="game-belt" data-part="belt">
+      <progress class="game-arrival" data-part="arrival" max="1" value="0" aria-label="Berikutnya"></progress>
+      <ol class="game-queue" data-part="queue" aria-label="Urutan surat"><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+1</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+3</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+6</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+10</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+15</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+21</span>
+      </li></ol>
+      <span class="game-rail" aria-hidden="true"></span>
+      <div class="game-imprint" data-part="imprint" aria-hidden="true"></div>
+      <output class="game-popup" data-part="popup" aria-hidden="true" aria-live="off" hidden></output>
+    </div>
+    <div class="game-rating" data-part="rating" hidden>
+      <span class="game-stars" data-part="resultStars"></span>
+      <span data-part="nextStar"></span>
+      <span data-part="bestCombo"></span>
+    </div>
+    <p class="game-instructions" data-part="instructions">Ketuk stempel yang sama dengan surat terdepan.</p>
+    <div class="game-stamps" role="group" aria-label="Pilih stempel"><button class="stamp game-stamp" type="button" data-stamp="flower" disabled>
+      <img src="/assets/design/flower.svg?v=5327589855" width="24" height="24" alt=""><span>Bunga</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="moon" disabled>
+      <img src="/assets/design/moon.svg?v=e06173ec34" width="24" height="24" alt=""><span>Bulan</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="star" disabled>
+      <img src="/assets/design/star.svg?v=ce69b847e0" width="24" height="24" alt=""><span>Bintang</span><b data-count aria-hidden="true">0</b>
+    </button></div>
+    <div class="game-actions">
+      <button type="button" class="action game-start" data-part="start" disabled>Mulai</button>
+      <p class="game-marker" data-part="marker" hidden></p>
+      <button type="button" class="game-pause" data-part="pause" hidden>Jeda</button>
+    </div>
+    <div class="game-totals">
+      <span><i aria-hidden="true">✉</i><b data-part="delivered"></b></span>
+      <span><i aria-hidden="true">▤</i><b data-part="longest"></b></span>
+      <a href="#rules">Cara bermain</a>
+    </div>
+  </div>
+  <div class="game-sr" data-part="announcement" role="status"></div>
+  <script type="application/json" data-play-copy>{"pause": "Jeda", "timeLeft": "Waktu", "seconds": "{n} dtk", "score": "Skor", "best": "Terbaik", "sceneLabel": "Kotak pos merah", "workbenchLabel": "Meja sortir", "beltLabel": "Urutan surat", "stampRowLabel": "Pilih stempel", "queue": "Antrean", "capacity": "{n}/{max}", "capacityFull": "Penuh · {n}/{max}", "intakeNow": "Kirim sekarang", "intakeBatch": "{n} × {stamp}", "points": "+{n} poin", "pausedTitle": "Dijeda", "idleTitle": "Menunggu", "idleDetail": "Surat berikutnya datang", "endOverflow": "Antrean penuh", "endTime": "45 detik selesai", "resultScore": "{n} poin", "delivered": "{n} surat terkirim", "longest": "Kiriman terbesar {n}", "newBest": "Rekor baru!", "start": "Mulai", "again": "Main lagi", "resumeDelivery": "Lanjut mengantar", "instructions": "Ketuk stempel yang sama dengan surat terdepan.", "instructionsEnded": "Coba ritme stempel yang lain.", "markerIntro": "Surat emas bisa masuk ke kelompok mana pun. Terus kirim untuk membuat kombo!", "markerWaiting": "Menunggu surat berikutnya.", "markerSent": "{n} surat terkirim · +{score} poin", "markerMiss": "Stempel salah · hingga −2 poin", "markerResumed": "Lanjut mengantar.", "stampFlower": "Bunga", "stampMoon": "Bulan", "stampStar": "Bintang", "stampButton": "Stempel {stamp}", "parcelFront": "Terdepan, surat {stamp}", "parcel": "Surat {stamp}", "parcelEmpty": "Kosong", "upcomingLabel": "Berikutnya", "comboCount": "Kombo {n}", "fever": "Fever ×2", "goldLetter": "Surat emas · cocok dengan semua cap", "nextStar": "{n} poin ke bintang berikutnya", "bestCombo": "Kombo terbaik {n}", "help": "Cara bermain"}</script>
+</section>
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">Cara bermain</h2>
   <p class="intro">Sortir semua amplop sebelum antrean penuh. Ini semua yang perlu kamu tahu untuk satu ronde 45 detik.</p>
   <section class="page-section">
-    <ol class="steps"><li>Setiap ronde berlangsung 45 detik.</li><li>Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir.</li><li>Lihat cap pada amplop terdepan, lalu ketuk tombol kotak pos dengan warna dan bentuk yang sama: bunga, bulan, atau bintang.</li><li>Semua amplop yang sama dan berurutan di depan terkirim bersamaan. Satu kiriman berisi n amplop bernilai n(n+1)/2 poin.</li><li>Salah ketuk mengurangi 2 poin. Skormu tidak pernah turun di bawah 0.</li></ol>
+    <ol class="steps"><li>Setiap ronde berlangsung 45 detik.</li><li>Amplop mengantre di depan kotak pos merah. Paling banyak 6 boleh menunggu; jika antrean meluap, kantor pos tutup dan ronde berakhir. Saat Demam, surat yang tidak muat dilewati.</li><li>Lihat cap pada amplop terdepan, lalu ketuk tombol kotak pos dengan warna dan bentuk yang sama: bunga, bulan, atau bintang.</li><li>Semua amplop yang sama dan berurutan di depan terkirim bersamaan. Satu kiriman berisi n amplop bernilai n(n+1)/2 poin.</li><li>Salah ketuk mengurangi 2 poin. Skormu tidak pernah turun di bawah 0.</li></ol>
+    <ul class="steps rush-rules"><li>Surat emas cocok dengan semua cap dan menggandakan poin kiriman. Mulai cap benar ke-4 berturut-turut, poin ×2, lalu ×3 mulai cap ke-8. Salah cap atau membiarkan surat menunggu 3,5 detik memutus kombo.</li><li>Kirim 18 surat untuk memulai Demam selama 6 detik. Poin digandakan, dan surat baru dilewati jika antrean penuh.</li><li>Raih bintang pada 150, 300, dan 450 poin.</li></ul>
   </section>
   <section class="page-section">
     <h2>Skor</h2>
     <table class="score-table">
       <thead><tr><th scope="col">Amplop dalam satu kiriman</th><th scope="col">Poin</th></tr></thead>
-      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr class="penalty"><td>Salah ketuk</td><td>−2</td></tr></tbody>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr><td>6</td><td>+21</td></tr><tr class="penalty"><td>Salah ketuk</td><td>−2</td></tr></tbody>
     </table>
   </section>
   <section class="page-section">
     <h2>Tentang aplikasi</h2>
-    <p>Aplikasi iOS dan Android sedang disiapkan untuk pengujian TestFlight. Belum ada tautan toko, dan game ini tidak bisa dimainkan di browser.</p>
+    <p>Aplikasi iOS dan Android sedang diuji. Tautan toko tersedia saat aplikasi dirilis.</p>
   </section>
   <a class="back" href="/id/">Tentang game</a>
 </section>
@@ -63,7 +204,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-links"><a href="https://ipe.rest/legal/">Ketentuan penggunaan</a><a href="https://ipe.rest/privacy/">Kebijakan privasi</a></div>
-    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (1)</span></p>
+    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (4)</span></p>
   </div>
 </footer>
 </body>

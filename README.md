@@ -4,7 +4,7 @@
 
 ## 로컬 빌드와 검사
 
-Python 3.9 이상이 필요합니다. 비공개 웹킷은 로컬에 설치하고 `vendor/ipe_web_kit.lock`으로 버전을 고정합니다.
+Python 3.9 이상과 Node.js 20 이상이 필요합니다. 비공개 웹킷은 로컬에 설치하고 `vendor/ipe_web_kit.lock`으로 버전을 고정합니다.
 
 ```sh
 repo="$(pwd)"
@@ -14,7 +14,7 @@ bash scripts/check.sh
 python3 -m http.server 8000 --bind 127.0.0.1 --directory public
 ```
 
-카피는 `content/copy.json`, 화면 스타일과 언어 진입 처리는 `assets/`에서 편집합니다. 변경 뒤 `public/`을 다시 생성합니다.
+사이트 카피는 `content/copy.json`, 게임 문구는 `content/play.json`에서 편집합니다. 게임 규칙과 화면 스타일은 `assets/`에 있습니다. 변경 뒤 `public/`을 다시 생성합니다.
 
 `assets/design/`의 토큰과 그림은 앱 레포 `foundry-f034` 커밋 `e9ce857`의 `assets/design/`에서 가져왔습니다.
 앱 버전이 바뀌면 `scripts/build_site.py`의 `APP_VERSION`을 앱 `pubspec.yaml`에 맞춥니다.

@@ -28,11 +28,13 @@
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
 <link rel="stylesheet" href="/assets/stampost.css?v=9d5cd6e013">
+<link rel="stylesheet" href="/assets/stampost-play.css?v=509d6feffb">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
+<script type="module" src="/assets/stampost-play.mjs?v=ea0175dc17"></script>
 </head>
-<body>
+<body class="play-page">
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="/"><span class="brand-mark" aria-hidden="true">✉</span>Stampost</a>
@@ -40,22 +42,161 @@
   </div>
 </header>
 <main>
-<section class="page wrap">
-  <h1>How to play</h1>
+<section class="game wrap" data-stampost-game aria-labelledby="game-title">
+  <h1 class="game-sr" id="game-title">Stampost</h1>
+  <div class="game-hud"><div class="game-stat">
+      <span id="game-time-label">Time</span>
+      <div><strong data-part="time"></strong></div>
+      <progress data-part="timeMeter" aria-labelledby="game-time-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-score-label">Score</span>
+      <div><strong data-part="score"></strong></div>
+      <progress data-part="scoreMeter" aria-labelledby="game-score-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-best-label">Best</span>
+      <div><strong data-part="best"></strong><span class="game-stars" data-part="bestStars"></span></div>
+      <progress data-part="bestMeter" aria-labelledby="game-best-label" max="1" value="0"></progress>
+    </div></div>
+  <div class="game-combo">
+    <div class="game-combo-slots" data-part="comboSlots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <strong data-part="combo"></strong>
+    <span class="game-combo-time" data-part="comboTime" hidden aria-hidden="true"></span>
+  </div>
+  <div class="game-stage" role="group" aria-label="Red mailbox">
+    <img class="game-mailbox" src="/assets/design/mailbox.svg?v=c33435558d" width="137" height="123" alt="">
+    <div class="game-intake">
+      <small data-part="intakeLabel">Send now</small>
+      <strong data-part="intakeTitle"></strong>
+      <span data-part="intakeDetail"></span>
+      <span class="game-new-best" data-part="newBest" hidden>New best!</span>
+    </div>
+    <div class="game-next" data-part="next">
+      <b id="game-next-label">Next</b>
+      <ol aria-labelledby="game-next-label"><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li></ol>
+    </div>
+  </div>
+  <div class="game-desk" role="group" aria-label="Sorting desk">
+    <div class="game-queue-head">
+      <strong>Queue</strong>
+      <div class="game-queue-counts" data-part="queueCounts" aria-hidden="true">
+        <span><img src="/assets/design/flower.svg?v=5327589855" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/moon.svg?v=e06173ec34" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/star.svg?v=ce69b847e0" width="12" height="12" alt=""><b>0</b></span>
+      </div>
+      <span class="game-capacity" data-part="capacity"></span>
+    </div>
+    <div class="game-belt" data-part="belt">
+      <progress class="game-arrival" data-part="arrival" max="1" value="0" aria-label="Next"></progress>
+      <ol class="game-queue" data-part="queue" aria-label="Letters in order"><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+1</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+3</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+6</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+10</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+15</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+21</span>
+      </li></ol>
+      <span class="game-rail" aria-hidden="true"></span>
+      <div class="game-imprint" data-part="imprint" aria-hidden="true"></div>
+      <output class="game-popup" data-part="popup" aria-hidden="true" aria-live="off" hidden></output>
+    </div>
+    <div class="game-rating" data-part="rating" hidden>
+      <span class="game-stars" data-part="resultStars"></span>
+      <span data-part="nextStar"></span>
+      <span data-part="bestCombo"></span>
+    </div>
+    <p class="game-instructions" data-part="instructions">Tap the stamp that matches the front letter.</p>
+    <div class="game-stamps" role="group" aria-label="Choose a stamp"><button class="stamp game-stamp" type="button" data-stamp="flower" disabled>
+      <img src="/assets/design/flower.svg?v=5327589855" width="24" height="24" alt=""><span>Flower</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="moon" disabled>
+      <img src="/assets/design/moon.svg?v=e06173ec34" width="24" height="24" alt=""><span>Moon</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="star" disabled>
+      <img src="/assets/design/star.svg?v=ce69b847e0" width="24" height="24" alt=""><span>Star</span><b data-count aria-hidden="true">0</b>
+    </button></div>
+    <div class="game-actions">
+      <button type="button" class="action game-start" data-part="start" disabled>Start</button>
+      <p class="game-marker" data-part="marker" hidden></p>
+      <button type="button" class="game-pause" data-part="pause" hidden>Pause</button>
+    </div>
+    <div class="game-totals">
+      <span><i aria-hidden="true">✉</i><b data-part="delivered"></b></span>
+      <span><i aria-hidden="true">▤</i><b data-part="longest"></b></span>
+      <a href="#rules">How to play</a>
+    </div>
+  </div>
+  <div class="game-sr" data-part="announcement" role="status"></div>
+  <script type="application/json" data-play-copy>{"pause": "Pause", "timeLeft": "Time", "seconds": "{n}s", "score": "Score", "best": "Best", "sceneLabel": "Red mailbox", "workbenchLabel": "Sorting desk", "beltLabel": "Letters in order", "stampRowLabel": "Choose a stamp", "queue": "Queue", "capacity": "{n}/{max}", "capacityFull": "Full · {n}/{max}", "intakeNow": "Send now", "intakeBatch": "{n} × {stamp}", "points": ["+1 pt", "+{n} pts"], "pausedTitle": "Paused", "idleTitle": "Waiting", "idleDetail": "Next letter is on its way", "endOverflow": "The queue is full", "endTime": "45 seconds done", "resultScore": ["1 pt", "{n} pts"], "delivered": ["1 letter sent", "{n} letters sent"], "longest": "Best batch {n}", "newBest": "New best!", "start": "Start", "again": "Play again", "resumeDelivery": "Keep delivering", "instructions": "Tap the stamp that matches the front letter.", "instructionsEnded": "Try a different stamping rhythm.", "markerIntro": "Gold letters join any batch. Keep sending for combos!", "markerWaiting": "Waiting for the next letter.", "markerSent": ["1 letter sent · +{score} pts", "{n} letters sent · +{score} pts"], "markerMiss": "Wrong stamp · up to −2 pts", "markerResumed": "Back to delivering.", "stampFlower": "Flower", "stampMoon": "Moon", "stampStar": "Star", "stampButton": "{stamp} stamp", "parcelFront": "Front, {stamp} letter", "parcel": "{stamp} letter", "parcelEmpty": "Empty", "upcomingLabel": "Next", "comboCount": "{n} combo", "fever": "Fever ×2", "goldLetter": "Gold letter · matches any stamp", "nextStar": "{n} pts to the next star", "bestCombo": "Best combo {n}", "help": "How to play"}</script>
+</section>
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">How to play</h2>
   <p class="intro">Sort every envelope before the line backs up. Here is everything you need for a 45-second round.</p>
   <section class="page-section">
-    <ol class="steps"><li>Each round lasts 45 seconds.</li><li>Envelopes line up at the red postbox. Up to 6 can wait — if the line overflows, the post office closes and the round ends.</li><li>Check the stamp on the first envelope, then tap the postbox button with the same color and shape: flower, moon, or star.</li><li>Every matching envelope in a row at the front goes out together. A batch of n envelopes scores n(n+1)/2 points.</li><li>A wrong tap costs 2 points. Your score never drops below 0.</li></ol>
+    <ol class="steps"><li>Each round lasts 45 seconds.</li><li>Envelopes line up at the red postbox. Up to 6 can wait — if the line overflows, the post office closes and the round ends. During Fever, extra arrivals are skipped.</li><li>Check the stamp on the first envelope, then tap the postbox button with the same color and shape: flower, moon, or star.</li><li>Every matching envelope in a row at the front goes out together. A batch of n envelopes scores n(n+1)/2 points.</li><li>A wrong tap costs 2 points. Your score never drops below 0.</li></ol>
+    <ul class="steps rush-rules"><li>Gold letters match any stamp and double the batch score. The 4th consecutive correct stamp scores ×2 and the 8th scores ×3. A wrong stamp or 3.5 seconds with mail waiting breaks the combo.</li><li>Send 18 letters to start 6 seconds of Fever. Points double and extra arrivals are skipped when the queue is full.</li><li>Earn stars at 150, 300, and 450 points.</li></ul>
   </section>
   <section class="page-section">
     <h2>Scoring</h2>
     <table class="score-table">
       <thead><tr><th scope="col">Envelopes in one batch</th><th scope="col">Points</th></tr></thead>
-      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr class="penalty"><td>Wrong tap</td><td>−2</td></tr></tbody>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr><td>6</td><td>+21</td></tr><tr class="penalty"><td>Wrong tap</td><td>−2</td></tr></tbody>
     </table>
   </section>
   <section class="page-section">
     <h2>Getting the app</h2>
-    <p>The iOS and Android app is being prepared for TestFlight testing. There is no store link yet, and the game can’t be played in the browser.</p>
+    <p>The iOS and Android app is in testing. Store links will be available at launch.</p>
   </section>
   <a class="back" href="/">Game overview</a>
 </section>
@@ -63,7 +204,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-links"><a href="https://ipe.rest/legal/">Terms of use</a><a href="https://ipe.rest/privacy/">Privacy policy</a></div>
-    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (1)</span></p>
+    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (4)</span></p>
   </div>
 </footer>
 </body>

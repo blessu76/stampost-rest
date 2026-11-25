@@ -59,8 +59,9 @@ class SiteTests(unittest.TestCase):
                 self.assertEqual(game["name"], copy["name"])
 
     def test_play_page_explains_rules_in_every_language(self):
-        self.assertEqual([site.batch_points(n) for n in range(1, 6)], [1, 3, 6, 10, 15])
-        self.assertEqual(site.BATCH_ROWS, 3)
+        points = (1, 3, 6, 10, 15, 21)
+        self.assertEqual([site.batch_points(n) for n in range(1, 7)], list(points))
+        self.assertEqual(site.BATCH_ROWS, 6)
         self.assertEqual(site.COPY["ko"]["how"], "노는 법")
         for lang in site.languages.SUPPORTED:
             copy = site.COPY[lang]
@@ -70,7 +71,7 @@ class SiteTests(unittest.TestCase):
                 html = page_path.read_text(encoding="utf-8")
                 page = Page(page_path)
                 self.assertEqual(len(page.find("html", lang=lang)), 1)
-                self.assertIn(f"<h1>{site.esc(copy['how'])}</h1>", html)
+                self.assertIn(f'<h2 id="game-guide-title">{site.esc(copy["how"])}</h2>', html)
                 self.assertEqual(len(copy["steps"]), 5)
                 for step in copy["steps"]:
                     self.assertIn(f"<li>{site.esc(step)}</li>", html)
@@ -81,11 +82,18 @@ class SiteTests(unittest.TestCase):
                 for found, facts in zip(numbers, expected):
                     self.assertLessEqual(facts, set(found))
                     self.assertLessEqual(set(found), facts | {"1"})  # ja: 「1ラウンド」
-                self.assertIn("TestFlight", copy["appText"])
                 self.assertIn(site.esc(copy["appText"]), html)
-                for n, points in ((1, 1), (2, 3), (3, 6)):
-                    self.assertIn(f"<tr><td>{n}</td><td>+{points}</td></tr>", html)
-                self.assertNotIn("<tr><td>4</td>", html)
+                for n, base in enumerate(points, start=1):
+                    self.assertIn(f"<tr><td>{n}</td><td>+{base}</td></tr>", html)
+                self.assertEqual(len(copy["rushRules"]), 3)
+                for rule in copy["rushRules"]:
+                    self.assertIn(f"<li>{site.esc(rule)}</li>", html)
+                fever_numbers = set(re.findall(r"\d+", copy["rushRules"][1]))
+                self.assertLessEqual({"18", "6"}, fever_numbers)
+                self.assertLessEqual(fever_numbers, {"18", "6", "2"})
+                star_numbers = set(re.findall(r"\d+", copy["rushRules"][2]))
+                self.assertLessEqual({"150", "300", "450"}, star_numbers)
+                self.assertLessEqual(star_numbers, {"150", "300", "450", "1"})
                 self.assertEqual(html.count("<tr><td>"), site.BATCH_ROWS)
                 self.assertIn(f"<td>{site.esc(copy['wrongTap'])}</td><td>\u22122</td>", html)
                 self.assertFalse(page.find("a", href=site.APP_STORE))
@@ -93,6 +101,22 @@ class SiteTests(unittest.TestCase):
                 self.assertNotIn("play.google.com", html)
                 home = Page(site.PUBLIC / site.route(lang).lstrip("/") / "index.html")
                 self.assertEqual(len(home.find("a", href=site.route(lang, "play/"))), 1)
+
+    def test_play_assets_and_translations(self):
+        self.assertEqual(set(site.PLAY_COPY), set(site.languages.SUPPORTED))
+        for lang, copy in site.PLAY_COPY.items():
+            with self.subTest(lang=lang):
+                self.assertEqual(set(copy), set(site.PLAY_COPY["en"]))
+                page = Page(site.PUBLIC / site.route(lang, "play/").lstrip("/") / "index.html")
+                for stamp in site.STAMPS:
+                    self.assertEqual(len(page.find("button", **{"data-stamp": stamp})), 1)
+                module, = page.find("script", type="module")
+                module_path = urlsplit(module["src"]).path.lstrip("/")
+                script = (site.PUBLIC / module_path).read_bytes()
+                self.assertEqual(module["src"], site.asset_url(module_path.removeprefix("assets/"), script))
+                rules_path = "stampost-round.mjs"
+                rules = (site.PUBLIC / "assets" / rules_path).read_bytes()
+                self.assertIn(f"from '{site.asset_url(rules_path, rules)}';".encode(), script)
 
     def test_site_links_alternates_and_cache_busting(self):
         for lang in site.languages.SUPPORTED:

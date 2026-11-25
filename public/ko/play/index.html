@@ -28,11 +28,13 @@
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
 <link rel="stylesheet" href="/assets/stampost.css?v=9d5cd6e013">
+<link rel="stylesheet" href="/assets/stampost-play.css?v=509d6feffb">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
+<script type="module" src="/assets/stampost-play.mjs?v=ea0175dc17"></script>
 </head>
-<body>
+<body class="play-page">
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="/ko/"><span class="brand-mark" aria-hidden="true">✉</span>도장 우체국</a>
@@ -40,22 +42,161 @@
   </div>
 </header>
 <main>
-<section class="page wrap">
-  <h1>노는 법</h1>
+<section class="game wrap" data-stampost-game aria-labelledby="game-title">
+  <h1 class="game-sr" id="game-title">도장 우체국</h1>
+  <div class="game-hud"><div class="game-stat">
+      <span id="game-time-label">남은 시간</span>
+      <div><strong data-part="time"></strong></div>
+      <progress data-part="timeMeter" aria-labelledby="game-time-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-score-label">점수</span>
+      <div><strong data-part="score"></strong></div>
+      <progress data-part="scoreMeter" aria-labelledby="game-score-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-best-label">최고</span>
+      <div><strong data-part="best"></strong><span class="game-stars" data-part="bestStars"></span></div>
+      <progress data-part="bestMeter" aria-labelledby="game-best-label" max="1" value="0"></progress>
+    </div></div>
+  <div class="game-combo">
+    <div class="game-combo-slots" data-part="comboSlots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <strong data-part="combo"></strong>
+    <span class="game-combo-time" data-part="comboTime" hidden aria-hidden="true"></span>
+  </div>
+  <div class="game-stage" role="group" aria-label="빨간 우체통">
+    <img class="game-mailbox" src="/assets/design/mailbox.svg?v=c33435558d" width="137" height="123" alt="">
+    <div class="game-intake">
+      <small data-part="intakeLabel">지금 보내면</small>
+      <strong data-part="intakeTitle"></strong>
+      <span data-part="intakeDetail"></span>
+      <span class="game-new-best" data-part="newBest" hidden>새 최고 기록!</span>
+    </div>
+    <div class="game-next" data-part="next">
+      <b id="game-next-label">다음</b>
+      <ol aria-labelledby="game-next-label"><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li></ol>
+    </div>
+  </div>
+  <div class="game-desk" role="group" aria-label="봉투 분류대">
+    <div class="game-queue-head">
+      <strong>대기줄</strong>
+      <div class="game-queue-counts" data-part="queueCounts" aria-hidden="true">
+        <span><img src="/assets/design/flower.svg?v=5327589855" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/moon.svg?v=e06173ec34" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/star.svg?v=ce69b847e0" width="12" height="12" alt=""><b>0</b></span>
+      </div>
+      <span class="game-capacity" data-part="capacity"></span>
+    </div>
+    <div class="game-belt" data-part="belt">
+      <progress class="game-arrival" data-part="arrival" max="1" value="0" aria-label="다음"></progress>
+      <ol class="game-queue" data-part="queue" aria-label="보낼 봉투 순서"><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+1</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+3</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+6</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+10</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+15</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+21</span>
+      </li></ol>
+      <span class="game-rail" aria-hidden="true"></span>
+      <div class="game-imprint" data-part="imprint" aria-hidden="true"></div>
+      <output class="game-popup" data-part="popup" aria-hidden="true" aria-live="off" hidden></output>
+    </div>
+    <div class="game-rating" data-part="rating" hidden>
+      <span class="game-stars" data-part="resultStars"></span>
+      <span data-part="nextStar"></span>
+      <span data-part="bestCombo"></span>
+    </div>
+    <p class="game-instructions" data-part="instructions">맨 앞 봉투와 같은 도장을 누르세요.</p>
+    <div class="game-stamps" role="group" aria-label="도장 선택"><button class="stamp game-stamp" type="button" data-stamp="flower" disabled>
+      <img src="/assets/design/flower.svg?v=5327589855" width="24" height="24" alt=""><span>꽃</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="moon" disabled>
+      <img src="/assets/design/moon.svg?v=e06173ec34" width="24" height="24" alt=""><span>달</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="star" disabled>
+      <img src="/assets/design/star.svg?v=ce69b847e0" width="24" height="24" alt=""><span>별</span><b data-count aria-hidden="true">0</b>
+    </button></div>
+    <div class="game-actions">
+      <button type="button" class="action game-start" data-part="start" disabled>배달 시작</button>
+      <p class="game-marker" data-part="marker" hidden></p>
+      <button type="button" class="game-pause" data-part="pause" hidden>잠깐 멈춤</button>
+    </div>
+    <div class="game-totals">
+      <span><i aria-hidden="true">✉</i><b data-part="delivered"></b></span>
+      <span><i aria-hidden="true">▤</i><b data-part="longest"></b></span>
+      <a href="#rules">노는 법</a>
+    </div>
+  </div>
+  <div class="game-sr" data-part="announcement" role="status"></div>
+  <script type="application/json" data-play-copy>{"pause": "잠깐 멈춤", "timeLeft": "남은 시간", "seconds": "{n}초", "score": "점수", "best": "최고", "sceneLabel": "빨간 우체통", "workbenchLabel": "봉투 분류대", "beltLabel": "보낼 봉투 순서", "stampRowLabel": "도장 선택", "queue": "대기줄", "capacity": "{n}/{max}장", "capacityFull": "가득 참 · {n}/{max}장", "intakeNow": "지금 보내면", "intakeBatch": "{stamp} {n}장", "points": "+{n}점", "pausedTitle": "일시정지", "idleTitle": "봉투 대기", "idleDetail": "다음 봉투를 기다려요", "endOverflow": "대기줄이 가득 찼어요", "endTime": "45초 배달 완료", "resultScore": "{n}점", "delivered": "배달 {n}장", "longest": "최대 묶음 {n}장", "newBest": "새 최고 기록!", "start": "배달 시작", "again": "한 판 더", "resumeDelivery": "배달 이어하기", "instructions": "맨 앞 봉투와 같은 도장을 누르세요.", "instructionsEnded": "도장 찍는 타이밍을 바꿔 다시 도전해요.", "markerIntro": "황금 편지는 어떤 묶음에도 붙어요. 끊지 않고 보내면 콤보!", "markerWaiting": "다음 봉투를 기다려요.", "markerSent": "{n}장 배달 완료 · +{score}점", "markerMiss": "다른 무늬예요 · 최대 2점 차감", "markerResumed": "배달을 이어갑니다.", "stampFlower": "꽃", "stampMoon": "달", "stampStar": "별", "stampButton": "{stamp} 도장", "parcelFront": "맨 앞, {stamp} 봉투", "parcel": "{stamp} 봉투", "parcelEmpty": "빈 칸", "upcomingLabel": "다음", "comboCount": "{n}콤보", "fever": "피버 ×2", "goldLetter": "황금 편지 · 어떤 도장이든 맞아요", "nextStar": "다음 별까지 {n}점", "bestCombo": "최고 콤보 {n}", "help": "노는 법"}</script>
+</section>
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">노는 법</h2>
   <p class="intro">대기줄이 밀리기 전에 봉투를 모두 분류하세요. 45초 한 판에 필요한 것을 모았어요.</p>
   <section class="page-section">
-    <ol class="steps"><li>한 판은 45초입니다.</li><li>봉투가 빨간 우체통 앞에 줄을 섭니다. 대기줄에는 6장까지 기다릴 수 있고, 넘치면 우체국이 닫히며 판이 끝나요.</li><li>맨 앞 봉투의 도장을 보고, 같은 색·모양의 우체통 버튼(꽃·달·별)을 탭하세요.</li><li>앞에서부터 이어진 같은 도장 봉투가 한 번에 나갑니다. n장을 묶으면 n(n+1)/2점이에요.</li><li>잘못 누르면 2점이 깎입니다. 점수는 0점 아래로 내려가지 않아요.</li></ol>
+    <ol class="steps"><li>한 판은 45초입니다.</li><li>봉투가 빨간 우체통 앞에 줄을 섭니다. 대기줄에는 6장까지 기다릴 수 있고, 넘치면 우체국이 닫히며 판이 끝나요. 피버 중에는 넘치는 우편만 건너뛰어요.</li><li>맨 앞 봉투의 도장을 보고, 같은 색·모양의 우체통 버튼(꽃·달·별)을 탭하세요.</li><li>앞에서부터 이어진 같은 도장 봉투가 한 번에 나갑니다. n장을 묶으면 n(n+1)/2점이에요.</li><li>잘못 누르면 2점이 깎입니다. 점수는 0점 아래로 내려가지 않아요.</li></ol>
+    <ul class="steps rush-rules"><li>황금 편지는 어떤 도장에도 맞고 묶음 점수를 두 배로 올려요. 4콤보부터 ×2, 8콤보부터 ×3입니다. 틀리거나 편지가 대기 중인 채 3.5초가 지나면 콤보가 끊겨요.</li><li>18장을 보내면 6초 동안 피버가 열려요. 점수가 두 배가 되고 대기줄이 가득 차도 넘치는 편지만 건너뛰어요.</li><li>150·300·450점에 별을 하나씩 받아요.</li></ul>
   </section>
   <section class="page-section">
     <h2>점수 계산</h2>
     <table class="score-table">
       <thead><tr><th scope="col">한 번에 보낸 봉투</th><th scope="col">점수</th></tr></thead>
-      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr class="penalty"><td>잘못 누름</td><td>−2</td></tr></tbody>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr><td>6</td><td>+21</td></tr><tr class="penalty"><td>잘못 누름</td><td>−2</td></tr></tbody>
     </table>
   </section>
   <section class="page-section">
     <h2>앱 소식</h2>
-    <p>iOS·Android 앱은 TestFlight 테스트를 준비하고 있어요. 아직 스토어 링크가 없고, 브라우저에서는 플레이할 수 없습니다.</p>
+    <p>iOS·Android 앱은 테스트 중이에요. 스토어 링크는 앱 출시 후에 열립니다.</p>
   </section>
   <a class="back" href="/ko/">게임 소개</a>
 </section>
@@ -63,7 +204,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-links"><a href="https://ipe.rest/legal/">이용약관</a><a href="https://ipe.rest/privacy/">개인정보처리방침</a></div>
-    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (1)</span></p>
+    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (4)</span></p>
   </div>
 </footer>
 </body>

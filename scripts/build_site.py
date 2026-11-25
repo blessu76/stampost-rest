@@ -16,6 +16,10 @@ sys.path.insert(0, str(ROOT / "vendor"))
 from ipe_web_kit import langswitch, languages, redirects, seo, ui
 from ipe_web_kit.seo import esc
 from ipe_web_kit.version import AppVersion
+if __package__:
+    from .play_markup import render_game
+else:
+    from play_markup import render_game
 
 DOMAIN = (ROOT / "CNAME").read_text(encoding="utf-8").strip()
 BASE = "https://" + DOMAIN
@@ -23,13 +27,14 @@ PRIVACY = "https://ipe.rest/privacy/"
 TERMS = "https://ipe.rest/legal/"
 CONTACT = "ipe.haven@gmail.com"
 APP_STORE = "https://apps.apple.com/app/id6838716235"
-APP_VERSION = AppVersion.parse("1.0.0+1")
+APP_VERSION = AppVersion.parse("1.0.0+4")
 COPY = json.loads((ROOT / "content/copy.json").read_text(encoding="utf-8"))
+PLAY_COPY = json.loads((ROOT / "content/play.json").read_text(encoding="utf-8"))
 SECTIONS = ("", "support/", "play/")
 LEGACY = ("zh-Hans", "ru", "ar", "hi")
 REDIRECT_OVERRIDES = {"zh-Hans": "zh-Hant"}
 STAMPS = ("flower", "moon", "star")
-BATCH_ROWS = 3  # 45초판 봉투 순서상 같은 도장은 최대 3장까지 이어진다(foundry-f034 lib/rules/round.dart)
+BATCH_ROWS = 6
 WRONG_TAP = "\u22122"
 
 
@@ -81,7 +86,7 @@ def render_home(lang, copy, artwork):
     <p class="hero-line">{esc(copy["hero"])}</p>
     <p class="intro">{esc(copy["description"])}</p>
     <div class="actions">
-      <a class="action" href="{route(lang, 'play/')}">{esc(copy["how"])}</a>
+      <a class="action" href="{route(lang, 'play/')}">{esc(PLAY_COPY[lang]["start"])}</a>
       <button type="button" disabled class="action store" data-store-url="{APP_STORE}">App Store <span>{esc(copy["soon"])}</span></button>
     </div>
   </div>
@@ -104,7 +109,7 @@ def render_home(lang, copy, artwork):
 </section>"""
 
 
-def render_detail(lang, section, copy):
+def render_detail(lang, section, copy, artwork):
     back = f'<a class="back" href="{route(lang)}">{esc(copy["home"])}</a>'
     if section == "support/":
         mail = "mailto:" + CONTACT + "?" + urlencode({"subject": "Stampost support"}).replace("+", "%20")
@@ -126,14 +131,19 @@ def render_detail(lang, section, copy):
 </section>"""
     if section == "play/":
         steps = "".join(f"<li>{esc(step)}</li>" for step in copy["steps"])
+        rush_rules = "".join(f"<li>{esc(rule)}</li>" for rule in copy["rushRules"])
         rows = "".join(
             f"<tr><td>{n}</td><td>+{batch_points(n)}</td></tr>" for n in range(1, BATCH_ROWS + 1)
         )
-        return f"""<section class="page wrap">
-  <h1>{esc(copy["how"])}</h1>
+        labels = {**PLAY_COPY[lang], "help": copy["how"]}
+        game = render_game(labels, artwork, STAMPS, BATCH_ROWS, batch_points, copy["name"])
+        return f"""{game}
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">{esc(copy["how"])}</h2>
   <p class="intro">{esc(copy["playIntro"])}</p>
   <section class="page-section">
     <ol class="steps">{steps}</ol>
+    <ul class="steps rush-rules">{rush_rules}</ul>
   </section>
   <section class="page-section">
     <h2>{esc(copy["scoring"])}</h2>
@@ -176,7 +186,10 @@ def render_page(lang, section, stylesheets, scripts, artwork):
     stylesheet_tags = "\n".join(f'<link rel="stylesheet" href="{esc(path)}">' for path in stylesheets)
     lang_entry = " data-language-entry" if lang == "en" and not missing else ""
     select = langswitch.select_html(lang, lambda code: route(code, "" if missing else section))
-    content = render_home(lang, copy, artwork) if is_home else render_detail(lang, section, copy)
+    is_play = section == "play/"
+    content = render_home(lang, copy, artwork) if is_home else render_detail(lang, section, copy, artwork)
+    game_script = f'<script type="module" src="{esc(scripts["play"])}"></script>' if is_play else ""
+    body_class = ' class="play-page"' if is_play else ""
     return f"""<!doctype html>
 <html lang="{lang}" dir="{langswitch.dir_for(lang)}"{lang_entry}>
 <head>
@@ -195,8 +208,9 @@ def render_page(lang, section, stylesheets, scripts, artwork):
 {metadata}
 {langswitch.script(scripts)}
 <script defer src="{esc(scripts["local"])}"></script>
+{game_script}
 </head>
-<body>
+<body{body_class}>
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="{route(lang)}"><span class="brand-mark" aria-hidden="true">✉</span>{esc(brand)}</a>
@@ -245,7 +259,7 @@ def llms():
 
 - [Game overview]({BASE}/)
 - [Support and FAQ]({BASE}/support/)
-- [How to play]({BASE}/play/)
+- [Play in your browser and see the rules]({BASE}/play/)
 - [Terms of use]({TERMS})
 - [Privacy policy]({PRIVACY})
 
@@ -273,11 +287,22 @@ def expected_files():
         asset_url("stampost.css", css),
     )
     scripts = {"js": f"/assets/ipe-lang.js?v={langswitch.asset_version()}", "local": asset_url("language.js", script)}
+    round_script = (ROOT / "assets/stampost-round.mjs").read_bytes()
+    round_url = asset_url("stampost-round.mjs", round_script)
+    play_script = (ROOT / "assets/stampost-play.mjs").read_bytes().replace(
+        b"./stampost-round.mjs", round_url.encode("ascii")
+    )
+    play_css = (ROOT / "assets/stampost-play.css").read_bytes()
+    play_css_url = asset_url("stampost-play.css", play_css)
+    scripts["play"] = asset_url("stampost-play.mjs", play_script)
     files = {
         "CNAME": DOMAIN + "\n",
         ".nojekyll": b"",
         "assets/stampost.css": css,
         "assets/language.js": script,
+        "assets/stampost-play.css": play_css,
+        "assets/stampost-round.mjs": round_script,
+        "assets/stampost-play.mjs": play_script,
         "assets/ipe-kit.css": ui.CSS.read_bytes(),
         "assets/ipe-lang.js": langswitch.JS.read_bytes(),
         "assets/design/tokens.css": tokens,
@@ -289,7 +314,8 @@ def expected_files():
     }
     for lang in languages.SUPPORTED:
         for section in SECTIONS:
-            files[route(lang, section).lstrip("/") + "index.html"] = render_page(lang, section, css_urls, scripts, artwork)
+            styles = (*css_urls, play_css_url) if section == "play/" else css_urls
+            files[route(lang, section).lstrip("/") + "index.html"] = render_page(lang, section, styles, scripts, artwork)
     files.update(redirects.generate(SECTIONS, BASE, en_root=True, langs=LEGACY, overrides=REDIRECT_OVERRIDES))
     return {path: text.encode("utf-8") if isinstance(text, str) else text for path, text in files.items()}
 

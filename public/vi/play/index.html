@@ -28,11 +28,13 @@
 <link rel="stylesheet" href="/assets/ipe-kit.css?v=0.2.0-17090b32">
 <link rel="stylesheet" href="/assets/design/tokens.css?v=b24e136019">
 <link rel="stylesheet" href="/assets/stampost.css?v=9d5cd6e013">
+<link rel="stylesheet" href="/assets/stampost-play.css?v=509d6feffb">
 
 <script src="/assets/ipe-lang.js?v=1-9c968e03" defer></script>
 <script defer src="/assets/language.js?v=e6c1b7a32e"></script>
+<script type="module" src="/assets/stampost-play.mjs?v=ea0175dc17"></script>
 </head>
-<body>
+<body class="play-page">
 <header class="masthead">
   <div class="wrap">
     <a class="wordmark" href="/vi/"><span class="brand-mark" aria-hidden="true">✉</span>Stampost</a>
@@ -40,22 +42,161 @@
   </div>
 </header>
 <main>
-<section class="page wrap">
-  <h1>Cách chơi</h1>
+<section class="game wrap" data-stampost-game aria-labelledby="game-title">
+  <h1 class="game-sr" id="game-title">Stampost</h1>
+  <div class="game-hud"><div class="game-stat">
+      <span id="game-time-label">Thời gian</span>
+      <div><strong data-part="time"></strong></div>
+      <progress data-part="timeMeter" aria-labelledby="game-time-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-score-label">Điểm</span>
+      <div><strong data-part="score"></strong></div>
+      <progress data-part="scoreMeter" aria-labelledby="game-score-label" max="1" value="0"></progress>
+    </div><div class="game-stat">
+      <span id="game-best-label">Cao nhất</span>
+      <div><strong data-part="best"></strong><span class="game-stars" data-part="bestStars"></span></div>
+      <progress data-part="bestMeter" aria-labelledby="game-best-label" max="1" value="0"></progress>
+    </div></div>
+  <div class="game-combo">
+    <div class="game-combo-slots" data-part="comboSlots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <strong data-part="combo"></strong>
+    <span class="game-combo-time" data-part="comboTime" hidden aria-hidden="true"></span>
+  </div>
+  <div class="game-stage" role="group" aria-label="Hòm thư đỏ">
+    <img class="game-mailbox" src="/assets/design/mailbox.svg?v=c33435558d" width="137" height="123" alt="">
+    <div class="game-intake">
+      <small data-part="intakeLabel">Gửi ngay</small>
+      <strong data-part="intakeTitle"></strong>
+      <span data-part="intakeDetail"></span>
+      <span class="game-new-best" data-part="newBest" hidden>Kỷ lục mới!</span>
+    </div>
+    <div class="game-next" data-part="next">
+      <b id="game-next-label">Tiếp theo</b>
+      <ol aria-labelledby="game-next-label"><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li><li><span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="24" height="24" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span></li></ol>
+    </div>
+  </div>
+  <div class="game-desk" role="group" aria-label="Bàn phân loại">
+    <div class="game-queue-head">
+      <strong>Hàng chờ</strong>
+      <div class="game-queue-counts" data-part="queueCounts" aria-hidden="true">
+        <span><img src="/assets/design/flower.svg?v=5327589855" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/moon.svg?v=e06173ec34" width="12" height="12" alt=""><b>0</b></span><span><img src="/assets/design/star.svg?v=ce69b847e0" width="12" height="12" alt=""><b>0</b></span>
+      </div>
+      <span class="game-capacity" data-part="capacity"></span>
+    </div>
+    <div class="game-belt" data-part="belt">
+      <progress class="game-arrival" data-part="arrival" max="1" value="0" aria-label="Tiếp theo"></progress>
+      <ol class="game-queue" data-part="queue" aria-label="Thứ tự thư"><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+1</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+3</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+6</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+10</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+15</span>
+      </li><li>
+        <span class="game-parcel">
+          <img class="game-parcel-paper" src="/assets/design/envelope.svg?v=ed4e54f821" width="50" height="50" alt="">
+          <img class="game-parcel-stamp" width="24" height="24" alt="" hidden>
+          <span class="game-parcel-gold" aria-hidden="true">✦</span>
+          <span class="game-sr" data-parcel-label></span>
+        </span>
+        <span class="game-ruler" aria-hidden="true">+21</span>
+      </li></ol>
+      <span class="game-rail" aria-hidden="true"></span>
+      <div class="game-imprint" data-part="imprint" aria-hidden="true"></div>
+      <output class="game-popup" data-part="popup" aria-hidden="true" aria-live="off" hidden></output>
+    </div>
+    <div class="game-rating" data-part="rating" hidden>
+      <span class="game-stars" data-part="resultStars"></span>
+      <span data-part="nextStar"></span>
+      <span data-part="bestCombo"></span>
+    </div>
+    <p class="game-instructions" data-part="instructions">Chạm con dấu giống lá thư đầu tiên.</p>
+    <div class="game-stamps" role="group" aria-label="Chọn con dấu"><button class="stamp game-stamp" type="button" data-stamp="flower" disabled>
+      <img src="/assets/design/flower.svg?v=5327589855" width="24" height="24" alt=""><span>Hoa</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="moon" disabled>
+      <img src="/assets/design/moon.svg?v=e06173ec34" width="24" height="24" alt=""><span>Trăng</span><b data-count aria-hidden="true">0</b>
+    </button><button class="stamp game-stamp" type="button" data-stamp="star" disabled>
+      <img src="/assets/design/star.svg?v=ce69b847e0" width="24" height="24" alt=""><span>Sao</span><b data-count aria-hidden="true">0</b>
+    </button></div>
+    <div class="game-actions">
+      <button type="button" class="action game-start" data-part="start" disabled>Bắt đầu</button>
+      <p class="game-marker" data-part="marker" hidden></p>
+      <button type="button" class="game-pause" data-part="pause" hidden>Tạm dừng</button>
+    </div>
+    <div class="game-totals">
+      <span><i aria-hidden="true">✉</i><b data-part="delivered"></b></span>
+      <span><i aria-hidden="true">▤</i><b data-part="longest"></b></span>
+      <a href="#rules">Cách chơi</a>
+    </div>
+  </div>
+  <div class="game-sr" data-part="announcement" role="status"></div>
+  <script type="application/json" data-play-copy>{"pause": "Tạm dừng", "timeLeft": "Thời gian", "seconds": "{n} giây", "score": "Điểm", "best": "Cao nhất", "sceneLabel": "Hòm thư đỏ", "workbenchLabel": "Bàn phân loại", "beltLabel": "Thứ tự thư", "stampRowLabel": "Chọn con dấu", "queue": "Hàng chờ", "capacity": "{n}/{max}", "capacityFull": "Đầy · {n}/{max}", "intakeNow": "Gửi ngay", "intakeBatch": "{n} × {stamp}", "points": "+{n} điểm", "pausedTitle": "Đang tạm dừng", "idleTitle": "Đang chờ", "idleDetail": "Lá thư tiếp theo sắp đến", "endOverflow": "Hàng chờ đã đầy", "endTime": "Hoàn thành 45 giây", "resultScore": "{n} điểm", "delivered": "Đã giao {n} thư", "longest": "Lô lớn nhất {n}", "newBest": "Kỷ lục mới!", "start": "Bắt đầu", "again": "Chơi lại", "resumeDelivery": "Tiếp tục giao", "instructions": "Chạm con dấu giống lá thư đầu tiên.", "instructionsEnded": "Thử nhịp đóng dấu khác nhé.", "markerIntro": "Thư vàng ghép được với mọi lô. Gửi liên tiếp để tạo combo!", "markerWaiting": "Đang chờ lá thư tiếp theo.", "markerSent": "Đã giao {n} thư · +{score} điểm", "markerMiss": "Sai con dấu · trừ tối đa 2 điểm", "markerResumed": "Tiếp tục giao thư.", "stampFlower": "Hoa", "stampMoon": "Trăng", "stampStar": "Sao", "stampButton": "Dấu {stamp}", "parcelFront": "Đầu hàng, thư {stamp}", "parcel": "Thư {stamp}", "parcelEmpty": "Trống", "upcomingLabel": "Tiếp theo", "comboCount": "Combo {n}", "fever": "Cao trào ×2", "goldLetter": "Thư vàng · khớp với mọi con dấu", "nextStar": "Còn {n} điểm tới sao tiếp theo", "bestCombo": "Combo cao nhất {n}", "help": "Cách chơi"}</script>
+</section>
+<section class="page game-guide wrap" id="rules" aria-labelledby="game-guide-title">
+  <h2 id="game-guide-title">Cách chơi</h2>
   <p class="intro">Phân loại hết phong bì trước khi hàng chờ bị dồn. Đây là mọi điều bạn cần cho một lượt 45 giây.</p>
   <section class="page-section">
-    <ol class="steps"><li>Mỗi lượt kéo dài 45 giây.</li><li>Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc.</li><li>Xem con dấu trên phong bì đầu hàng, rồi chạm nút hòm thư cùng màu và hình dạng: hoa, trăng hoặc sao.</li><li>Mọi phong bì giống nhau nối tiếp ở đầu hàng sẽ được gửi cùng lúc. Một lần gửi n phong bì được n(n+1)/2 điểm.</li><li>Chạm sai bị trừ 2 điểm. Điểm của bạn không bao giờ xuống dưới 0.</li></ol>
+    <ol class="steps"><li>Mỗi lượt kéo dài 45 giây.</li><li>Phong bì xếp hàng trước hòm thư đỏ. Tối đa 6 lá được chờ; nếu hàng tràn, bưu điện đóng cửa và lượt chơi kết thúc. Trong Cơn sốt, thư không còn chỗ sẽ được bỏ qua.</li><li>Xem con dấu trên phong bì đầu hàng, rồi chạm nút hòm thư cùng màu và hình dạng: hoa, trăng hoặc sao.</li><li>Mọi phong bì giống nhau nối tiếp ở đầu hàng sẽ được gửi cùng lúc. Một lần gửi n phong bì được n(n+1)/2 điểm.</li><li>Chạm sai bị trừ 2 điểm. Điểm của bạn không bao giờ xuống dưới 0.</li></ol>
+    <ul class="steps rush-rules"><li>Thư vàng hợp với mọi dấu và nhân đôi điểm cả lô. Từ lần đóng đúng liên tiếp thứ 4 được ×2, từ lần thứ 8 được ×3. Đóng sai hoặc để thư chờ 3,5 giây sẽ ngắt combo.</li><li>Gửi 18 thư để bật Cơn sốt trong 6 giây. Điểm tăng gấp đôi và thư mới được bỏ qua nếu hàng chờ đã đầy.</li><li>Nhận sao khi đạt 150, 300 và 450 điểm.</li></ul>
   </section>
   <section class="page-section">
     <h2>Cách tính điểm</h2>
     <table class="score-table">
       <thead><tr><th scope="col">Số phong bì mỗi lần gửi</th><th scope="col">Điểm</th></tr></thead>
-      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr class="penalty"><td>Chạm sai</td><td>−2</td></tr></tbody>
+      <tbody><tr><td>1</td><td>+1</td></tr><tr><td>2</td><td>+3</td></tr><tr><td>3</td><td>+6</td></tr><tr><td>4</td><td>+10</td></tr><tr><td>5</td><td>+15</td></tr><tr><td>6</td><td>+21</td></tr><tr class="penalty"><td>Chạm sai</td><td>−2</td></tr></tbody>
     </table>
   </section>
   <section class="page-section">
     <h2>Về ứng dụng</h2>
-    <p>Ứng dụng iOS và Android đang được chuẩn bị để thử nghiệm qua TestFlight. Hiện chưa có liên kết cửa hàng và chưa thể chơi trên trình duyệt.</p>
+    <p>Ứng dụng iOS và Android đang được thử nghiệm. Liên kết cửa hàng sẽ có khi ứng dụng ra mắt.</p>
   </section>
   <a class="back" href="/vi/">Giới thiệu trò chơi</a>
 </section>
@@ -63,7 +204,7 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer-links"><a href="https://ipe.rest/legal/">Điều khoản sử dụng</a><a href="https://ipe.rest/privacy/">Chính sách quyền riêng tư</a></div>
-    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (1)</span></p>
+    <p class="ipe-studio" dir="ltr"><span class="ipe-studio__org">© 2026 <a href="https://ipe.rest/">ipe studio</a></span><span class="ipe-studio__sep" aria-hidden="true">·</span><span class="ipe-studio__ver">v1.0.0 (4)</span></p>
   </div>
 </footer>
 </body>

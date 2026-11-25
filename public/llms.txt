@@ -6,7 +6,7 @@
 
 - [Game overview](https://stampost.ipe.rest/)
 - [Support and FAQ](https://stampost.ipe.rest/support/)
-- [How to play](https://stampost.ipe.rest/play/)
+- [Play in your browser and see the rules](https://stampost.ipe.rest/play/)
 - [Terms of use](https://ipe.rest/legal/)
 - [Privacy policy](https://ipe.rest/privacy/)
 
