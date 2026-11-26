@@ -13,24 +13,27 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public"
 sys.path.insert(0, str(ROOT / "vendor"))
 
-from ipe_web_kit import langswitch, languages, redirects, seo, ui
+from ipe_web_kit import journal, langswitch, languages, redirects, seo, ui
 from ipe_web_kit.seo import esc
 from ipe_web_kit.version import AppVersion
+
 if __package__:
+    from . import journal_content
     from .play_markup import render_game
 else:
+    import journal_content
     from play_markup import render_game
 
 DOMAIN = (ROOT / "CNAME").read_text(encoding="utf-8").strip()
 BASE = "https://" + DOMAIN
-PRIVACY = "https://ipe.rest/privacy/"
-TERMS = "https://ipe.rest/legal/"
 CONTACT = "ipe.haven@gmail.com"
 APP_STORE = "https://apps.apple.com/app/id6838716235"
 APP_VERSION = AppVersion.parse("1.0.0+4")
 COPY = json.loads((ROOT / "content/copy.json").read_text(encoding="utf-8"))
 PLAY_COPY = json.loads((ROOT / "content/play.json").read_text(encoding="utf-8"))
-SECTIONS = ("", "support/", "play/")
+POLICIES = json.loads((ROOT / "content/policy.json").read_text(encoding="utf-8"))
+JOURNAL_UI = json.loads((ROOT / "content/journal_ui.json").read_text(encoding="utf-8"))
+SECTIONS = ("", "support/", "play/", "privacy/", "terms/", "journal/")
 LEGACY = ("zh-Hans", "ru", "ar", "hi")
 REDIRECT_OVERRIDES = {"zh-Hans": "zh-Hant"}
 STAMPS = ("flower", "moon", "star")
@@ -48,6 +51,10 @@ def route(lang, section=""):
 
 def alternate_urls(section):
     return {lang: BASE + route(lang, section) for lang in languages.SUPPORTED}
+
+
+def journal_data():
+    return journal_content.load(journal_content.DIRECTORY, lambda lang, section: BASE + route(lang, section))
 
 
 def game_data(lang, copy):
@@ -161,7 +168,50 @@ def render_detail(lang, section, copy, artwork):
     return f'<section class="page wrap"><h1>{esc(copy["missing"])}</h1>{back}</section>'
 
 
-def render_page(lang, section, stylesheets, scripts, artwork):
+def render_policy(lang, section):
+    kind = section.rstrip("/")
+    title = COPY[lang][kind]
+    blocks = "\n".join(
+        f'<section class="page-section"><h2>{esc(heading)}</h2><p>{esc(paragraph)}</p></section>'
+        for heading, paragraph in POLICIES[lang][kind]
+    )
+    return f"""<article class="page wrap">
+  <h1>{esc(title)}</h1>
+  {blocks}
+  <p class="page-section"><a href="mailto:{CONTACT}">{CONTACT}</a></p>
+</article>"""
+
+
+def render_journal(lang, journal_sections, posts, section):
+    copy = JOURNAL_UI[lang]
+    if section == "journal/":
+        items = "\n".join(
+            f'<li class="page-section"><time datetime="{day}">{day}</time>'
+            f'<h2><a href="{route(lang, path)}">{esc(posts[slug][lang]["title"])}</a></h2>'
+            f'<p>{esc(posts[slug][lang]["summary"])}</p></li>'
+            for path, (slug, day) in journal_sections.items()
+        )
+        listing = f'<ul class="journal-list">{items}</ul>' if items else f'<p class="page-section">{esc(copy["empty"])}</p>'
+        return f"""<section class="page wrap">
+  <h1>{esc(copy["title"])}</h1>
+  <p class="intro">{esc(copy["description"])}</p>
+  {listing}
+</section>"""
+
+    slug, day = journal_sections[section]
+    edition = posts[slug][lang]
+    paragraphs = "\n".join(f"<p>{esc(paragraph)}</p>" for paragraph in edition["paragraphs"])
+    return f"""<article class="page wrap">
+  <time datetime="{day}">{day}</time>
+  <h1>{esc(edition["title"])}</h1>
+  <p class="intro">{esc(edition["summary"])}</p>
+  <div class="page-section journal-body">{paragraphs}</div>
+  <a class="back" href="{route(lang, "journal/")}">{esc(copy["read"])}</a>
+  <a class="back" href="{route(lang, "play/")}">{esc(PLAY_COPY[lang]["start"])}</a>
+</article>"""
+
+
+def render_page(lang, section, stylesheets, scripts, artwork, posts, journal_sections):
     copy = COPY[lang]
     is_home = section == ""
     missing = section == "404.html"
@@ -170,11 +220,27 @@ def render_page(lang, section, stylesheets, scripts, artwork):
         "": f'{brand} | {copy["tagline"]}',
         "support/": f'{copy["support"]} | {brand}',
         "play/": f'{copy["how"]} | {brand}',
+        "privacy/": f'{copy["privacy"]} | {brand}',
+        "terms/": f'{copy["terms"]} | {brand}',
+        "journal/": f'{JOURNAL_UI[lang]["title"]} | {brand}',
         "404.html": f'404 | {brand}',
-    }[section]
+    }
     desc = {"": copy["description"], "support/": copy["supportText"], "play/": copy["playIntro"],
-            "404.html": copy["missing"]}[section]
-    description = esc(seo.meta_desc(desc))
+            "privacy/": POLICIES[lang]["privacy"][0][1], "terms/": POLICIES[lang]["terms"][0][1],
+            "journal/": JOURNAL_UI[lang]["description"], "404.html": copy["missing"]}
+    metadata = game_data(lang, copy) if is_home else ""
+    og_type = "website"
+    if section in journal_sections:
+        slug, day = journal_sections[section]
+        edition = posts[slug][lang]
+        title[section] = f'{edition["title"]} | {brand}'
+        desc[section] = edition["summary"]
+        og_type = "article"
+        metadata = seo.jsonld_script(journal.blogposting(
+            posts[slug], lang, date_published=day, description=edition["summary"], publisher=seo.ORG,
+        ))
+    title = title[section]
+    description = esc(seo.meta_desc(desc[section]))
     url = BASE + route(lang, section)
     indexing = (
         '<meta name="robots" content="noindex,follow">'
@@ -182,12 +248,18 @@ def render_page(lang, section, stylesheets, scripts, artwork):
         f'<link rel="canonical" href="{url}">\n'
         + seo.alternate_links(alternate_urls(section), x_default=BASE + route("en", section))
     )
-    metadata = game_data(lang, copy) if is_home else ""
     stylesheet_tags = "\n".join(f'<link rel="stylesheet" href="{esc(path)}">' for path in stylesheets)
     lang_entry = " data-language-entry" if lang == "en" and not missing else ""
     select = langswitch.select_html(lang, lambda code: route(code, "" if missing else section))
     is_play = section == "play/"
-    content = render_home(lang, copy, artwork) if is_home else render_detail(lang, section, copy, artwork)
+    if is_home:
+        content = render_home(lang, copy, artwork)
+    elif section in ("privacy/", "terms/"):
+        content = render_policy(lang, section)
+    elif section == "journal/" or section in journal_sections:
+        content = render_journal(lang, journal_sections, posts, section)
+    else:
+        content = render_detail(lang, section, copy, artwork)
     game_script = f'<script type="module" src="{esc(scripts["play"])}"></script>' if is_play else ""
     body_class = ' class="play-page"' if is_play else ""
     return f"""<!doctype html>
@@ -197,7 +269,7 @@ def render_page(lang, section, stylesheets, scripts, artwork):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{description}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{esc(brand)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{description}">
@@ -222,7 +294,11 @@ def render_page(lang, section, stylesheets, scripts, artwork):
 </main>
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-links"><a href="{TERMS}">{esc(copy["terms"])}</a><a href="{PRIVACY}">{esc(copy["privacy"])}</a></div>
+    <div class="footer-links">
+      <a href="{route(lang, 'journal/')}">{esc(JOURNAL_UI[lang]["title"])}</a>
+      <a href="{route(lang, 'terms/')}">{esc(copy["terms"])}</a>
+      <a href="{route(lang, 'privacy/')}">{esc(copy["privacy"])}</a>
+    </div>
     {ui.studio_line(label="", year=2026, version=APP_VERSION)}
   </div>
 </footer>
@@ -231,16 +307,18 @@ def render_page(lang, section, stylesheets, scripts, artwork):
 """
 
 
-def sitemap():
+def sitemap(journal_sections):
     namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
     xhtml = "http://www.w3.org/1999/xhtml"
     root = ET.Element("urlset", {"xmlns": namespace, "xmlns:xhtml": xhtml})
-    for section in SECTIONS:
+    for section in (*SECTIONS, *journal_sections):
         alternates = alternate_urls(section)
         alternate_entries = {**alternates, "x-default": alternates["en"]}
         for url in alternates.values():
             entry = ET.SubElement(root, "url")
             ET.SubElement(entry, "loc").text = url
+            if section in journal_sections:
+                ET.SubElement(entry, "lastmod").text = journal_sections[section][1]
             for lang, href in alternate_entries.items():
                 ET.SubElement(entry, "xhtml:link", rel="alternate", hreflang=lang, href=href)
     ET.indent(root, space="  ")
@@ -260,8 +338,9 @@ def llms():
 - [Game overview]({BASE}/)
 - [Support and FAQ]({BASE}/support/)
 - [Play in your browser and see the rules]({BASE}/play/)
-- [Terms of use]({TERMS})
-- [Privacy policy]({PRIVACY})
+- [Development journal]({BASE}/journal/)
+- [Terms of use]({BASE}/terms/)
+- [Privacy policy]({BASE}/privacy/)
 
 ## Languages
 
@@ -274,6 +353,8 @@ def asset_url(name, data):
 
 
 def expected_files():
+    posts, ledger = journal_data()
+    journal_sections = journal_content.sections(ledger)
     css = (ROOT / "assets/stampost.css").read_bytes()
     script = (ROOT / "assets/language.js").read_bytes()
     tokens = (ROOT / "assets/design/tokens.css").read_bytes()
@@ -308,14 +389,16 @@ def expected_files():
         "assets/design/tokens.css": tokens,
         **{f"assets/design/{name}.svg": data for name, data in illustrations.items()},
         "robots.txt": f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n",
-        "sitemap.xml": sitemap(),
+        "sitemap.xml": sitemap(journal_sections),
         "llms.txt": llms(),
-        "404.html": render_page("en", "404.html", css_urls, scripts, artwork),
+        "404.html": render_page("en", "404.html", css_urls, scripts, artwork, posts, journal_sections),
     }
     for lang in languages.SUPPORTED:
-        for section in SECTIONS:
+        for section in (*SECTIONS, *journal_sections):
             styles = (*css_urls, play_css_url) if section == "play/" else css_urls
-            files[route(lang, section).lstrip("/") + "index.html"] = render_page(lang, section, styles, scripts, artwork)
+            files[route(lang, section).lstrip("/") + "index.html"] = render_page(
+                lang, section, styles, scripts, artwork, posts, journal_sections,
+            )
     files.update(redirects.generate(SECTIONS, BASE, en_root=True, langs=LEGACY, overrides=REDIRECT_OVERRIDES))
     return {path: text.encode("utf-8") if isinstance(text, str) else text for path, text in files.items()}
 

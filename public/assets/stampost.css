@@ -239,6 +239,10 @@ a.action:hover { background: #801c2a; }
 .page-section dt { font-weight: 800; }
 .page-section dd { margin: 0 0 .85rem; color: var(--muted); }
 .page .back { margin-block-start: 1rem; }
+.journal-list { list-style: none; margin: 0; padding: 0; }
+.journal-list time, .page > time { color: var(--muted); font-size: .94rem; }
+.journal-body { display: grid; gap: 1rem; }
+.journal-body + .back { margin-inline-end: 1rem; }
 .steps { margin: 0; padding-inline-start: 1.4rem; }
 .steps li + li { margin-block-start: .55rem; }
 .score-table {

@@ -1,0 +1,314 @@
+{
+  "en": {
+    "privacy": [
+      [
+        "App data",
+        "The app stores settings and best results on your device. It has no Stampost account, ads, tracking or analytics. The app does not send these records to ipe studio."
+      ],
+      [
+        "Website data",
+        "The web game remembers your language, best score and star rating in your browser. Clear this site's browser data to remove them. The site has no ads or analytics. GitHub Pages hosts the site and logs visitor IP addresses for security."
+      ],
+      [
+        "Support and stores",
+        "If you email support, ipe studio uses your email address and what you send to answer you. Use the same contact for privacy requests. Apple and Google handle store downloads under their own privacy notices."
+      ]
+    ],
+    "terms": [
+      [
+        "Using Stampost",
+        "ipe studio provides the app and web game for personal, noncommercial use. You may use it as offered. Copyright in the game, illustrations and sounds belongs to their respective rights holders. Copying and redistribution require permission where the law requires it."
+      ],
+      [
+        "Saved results and changes",
+        "Removing the app, switching devices or clearing browser data can affect access to saved results. Features may change or be discontinued. Your statutory rights apply. Contact us for questions about these terms."
+      ]
+    ]
+  },
+  "ko": {
+    "privacy": [
+      [
+        "앱 데이터",
+        "앱은 설정과 최고 기록을 기기에 저장합니다. 도장 우체국 계정, 광고, 추적 및 이용 통계 기능은 없습니다. 앱은 이 기록을 ipe studio에 전송하지 않습니다."
+      ],
+      [
+        "웹사이트 데이터",
+        "웹 게임은 선택한 언어, 최고 점수와 별 등급을 브라우저에 기억합니다. 이 사이트의 브라우저 데이터를 지우면 이 정보도 삭제됩니다. 사이트에는 광고와 이용 통계 기능이 없습니다. 사이트를 호스팅하는 GitHub Pages는 보안을 위해 방문자의 IP 주소를 기록합니다."
+      ],
+      [
+        "지원 문의와 스토어",
+        "이메일로 지원을 요청하면 ipe studio는 답변에 이메일 주소와 보내 주신 내용을 사용합니다. 개인정보에 관한 요청도 같은 주소로 받습니다. Apple과 Google은 각자의 개인정보 처리방침에 따라 앱 다운로드를 처리합니다."
+      ]
+    ],
+    "terms": [
+      [
+        "도장 우체국 이용",
+        "ipe studio는 개인적이고 비상업적인 이용을 위해 앱과 웹 게임을 제공합니다. 제공되는 형태로 이용할 수 있습니다. 게임, 그림, 소리의 저작권은 각 권리자에게 있습니다. 법령에서 허락을 요구하는 복제와 재배포에는 권리자의 허락이 필요합니다."
+      ],
+      [
+        "기록과 변경",
+        "앱을 삭제하거나 기기를 바꾸거나 브라우저 데이터를 지우면 저장 기록에 접근하기 어려울 수 있습니다. 기능은 변경되거나 제공이 중단될 수 있습니다. 법령에 따른 이용자의 권리가 적용됩니다. 약관에 관한 질문은 아래 주소로 보내 주세요."
+      ]
+    ]
+  },
+  "ja": {
+    "privacy": [
+      [
+        "アプリのデータ",
+        "アプリは設定と自己ベストを端末に保存します。Stampostのアカウント、広告、トラッキング、アクセス解析はありません。アプリはこれらの記録をipe studioに送信しません。"
+      ],
+      [
+        "ウェブサイトのデータ",
+        "ウェブゲームは、選択した言語、最高スコア、星の評価をブラウザーに保存します。このサイトの閲覧データを消去すると削除できます。サイトに広告やアクセス解析はありません。ホスティングを提供するGitHub Pagesは、セキュリティのために訪問者のIPアドレスを記録します。"
+      ],
+      [
+        "サポートとストア",
+        "メールでお問い合わせいただくと、ipe studioは返信のためにメールアドレスとお送りいただいた内容を使用します。プライバシーに関するご要望も同じ窓口で承ります。AppleとGoogleはそれぞれのプライバシーポリシーに従ってダウンロードを処理します。"
+      ]
+    ],
+    "terms": [
+      [
+        "Stampostの利用",
+        "ipe studioは個人的かつ非商用の利用を目的としてアプリとウェブゲームを提供します。提供された形でご利用いただけます。ゲーム、イラスト、音声の著作権はそれぞれの権利者に帰属します。法律で許諾が必要とされる複製と再配布には、権利者の許諾が必要です。"
+      ],
+      [
+        "記録と変更",
+        "アプリの削除、端末の変更、ブラウザーのデータの消去により、保存した記録にアクセスできなくなる場合があります。機能が変更されたり、提供が終了したりすることがあります。法令に基づく利用者の権利は適用されます。利用規約に関するご質問は下記までお寄せください。"
+      ]
+    ]
+  },
+  "zh-Hant": {
+    "privacy": [
+      [
+        "應用程式資料",
+        "應用程式會將設定及最佳紀錄儲存在裝置上。應用程式沒有 Stampost 帳號、廣告、追蹤或使用情形分析，也不會將這些紀錄傳給 ipe studio。"
+      ],
+      [
+        "網站資料",
+        "網頁遊戲會在瀏覽器中記住所選語言、最高分與星等。清除本網站的瀏覽器資料即可移除這些資訊。本網站沒有廣告或使用情形分析。網站由 GitHub Pages 託管，該服務會出於安全目的記錄訪客的 IP 位址。"
+      ],
+      [
+        "客服與商店",
+        "如果你以電子郵件聯絡客服，ipe studio 會使用你的電子郵件地址以及你提供的內容來回覆。隱私相關請求也可寄到同一信箱。Apple 和 Google 依各自的隱私權政策處理應用程式下載。"
+      ]
+    ],
+    "terms": [
+      [
+        "使用 Stampost",
+        "ipe studio 提供應用程式及網頁遊戲供個人、非商業使用。你可以依提供的方式使用。遊戲、插圖和音效的著作權屬各自的權利人。法律規定須取得許可時，複製或轉發前須取得權利人同意。"
+      ],
+      [
+        "紀錄與變更",
+        "刪除應用程式、更換裝置或清除瀏覽器資料，可能導致無法存取已儲存的紀錄。功能可能變更或停止提供。你依法享有的權利仍然適用。如對本條款有疑問，請聯絡下方信箱。"
+      ]
+    ]
+  },
+  "es": {
+    "privacy": [
+      [
+        "Datos de la aplicación",
+        "La aplicación guarda los ajustes y tus mejores resultados en el dispositivo. No tiene cuentas de Stampost, publicidad, seguimiento ni herramientas de análisis. La aplicación no envía estos registros a ipe studio."
+      ],
+      [
+        "Datos del sitio web",
+        "El juego web recuerda el idioma, la mejor puntuación y la calificación por estrellas en el navegador. Para eliminarlos, borra los datos de este sitio en el navegador. El sitio no tiene anuncios ni herramientas de análisis. GitHub Pages aloja el sitio y registra las direcciones IP de los visitantes por motivos de seguridad."
+      ],
+      [
+        "Asistencia y tiendas",
+        "Si escribes a asistencia, ipe studio utiliza tu dirección de correo y lo que nos envíes para responderte. Usa el mismo contacto para consultas sobre privacidad. Apple y Google gestionan las descargas con arreglo a sus propias políticas de privacidad."
+      ]
+    ],
+    "terms": [
+      [
+        "Uso de Stampost",
+        "ipe studio ofrece la aplicación y el juego web para uso personal y no comercial. Puedes utilizarlos tal como se ofrecen. Los derechos de autor sobre el juego, las ilustraciones y los sonidos pertenecen a sus respectivos titulares. La copia y la redistribución requieren permiso cuando lo exige la ley."
+      ],
+      [
+        "Resultados guardados y cambios",
+        "Eliminar la aplicación, cambiar de dispositivo o borrar datos del navegador puede afectar el acceso a tus resultados guardados. Las funciones pueden cambiar o dejar de estar disponibles. Se aplican tus derechos legales. Contáctanos si tienes preguntas sobre estas condiciones."
+      ]
+    ]
+  },
+  "pt-BR": {
+    "privacy": [
+      [
+        "Dados do aplicativo",
+        "O aplicativo guarda as configurações e seus melhores resultados no dispositivo. Ele não tem conta do Stampost, anúncios, rastreamento nem ferramentas de análise. O aplicativo não envia esses registros ao ipe studio."
+      ],
+      [
+        "Dados do site",
+        "O jogo na web guarda o idioma, a maior pontuação e a avaliação em estrelas no navegador. Para removê-los, limpe os dados deste site no navegador. O site não usa anúncios nem ferramentas de análise. O GitHub Pages hospeda o site e registra os endereços IP dos visitantes por motivos de segurança."
+      ],
+      [
+        "Suporte e lojas",
+        "Se você enviar um e-mail ao suporte, o ipe studio usará seu endereço de e-mail e o conteúdo enviado para responder. Use o mesmo contato para pedidos relacionados à privacidade. A Apple e o Google processam os downloads conforme suas próprias políticas de privacidade."
+      ]
+    ],
+    "terms": [
+      [
+        "Uso do Stampost",
+        "O ipe studio disponibiliza o aplicativo e o jogo na web para uso pessoal e não comercial. Você pode usá-los conforme disponibilizados. Os direitos autorais sobre o jogo, as ilustrações e os sons pertencem aos respectivos titulares. A cópia e a redistribuição exigem autorização quando a lei assim determina."
+      ],
+      [
+        "Resultados salvos e mudanças",
+        "Apagar o aplicativo, trocar de dispositivo ou limpar os dados do navegador pode afetar o acesso aos resultados salvos. Os recursos podem mudar ou ser descontinuados. Seus direitos previstos em lei continuam aplicáveis. Entre em contato se tiver dúvidas sobre estes termos."
+      ]
+    ]
+  },
+  "fr": {
+    "privacy": [
+      [
+        "Données de l’application",
+        "L’application enregistre les réglages et vos meilleurs résultats sur votre appareil. Elle ne comporte ni compte Stampost, ni publicité, ni suivi, ni mesure d’audience. L’application ne transmet pas ces données à ipe studio."
+      ],
+      [
+        "Données du site",
+        "Le jeu web mémorise la langue, le meilleur score et le nombre d’étoiles dans votre navigateur. Effacez les données de ce site dans votre navigateur pour les supprimer. Le site ne contient ni publicité ni outil de mesure d’audience. GitHub Pages héberge le site et consigne les adresses IP des visiteurs pour des raisons de sécurité."
+      ],
+      [
+        "Assistance et boutiques",
+        "Si vous écrivez à l’assistance, ipe studio utilise votre adresse e-mail et les informations que vous transmettez pour vous répondre. Vous pouvez écrire à la même adresse pour les demandes liées à la confidentialité. Apple et Google traitent les téléchargements conformément à leurs propres politiques de confidentialité."
+      ]
+    ],
+    "terms": [
+      [
+        "Utilisation de Stampost",
+        "ipe studio propose l’application et le jeu web pour un usage personnel et non commercial. Vous pouvez les utiliser sous la forme proposée. Les droits d’auteur sur le jeu, les illustrations et les sons appartiennent à leurs titulaires respectifs. La copie et la redistribution nécessitent une autorisation lorsque la loi l’exige."
+      ],
+      [
+        "Résultats enregistrés et modifications",
+        "Supprimer l’application, changer d’appareil ou effacer les données du navigateur peut affecter l’accès à vos résultats enregistrés. Les fonctionnalités peuvent être modifiées ou retirées. Vos droits prévus par la loi s’appliquent. Contactez-nous pour toute question sur ces conditions."
+      ]
+    ]
+  },
+  "de": {
+    "privacy": [
+      [
+        "App-Daten",
+        "Die App speichert Einstellungen und Bestleistungen auf deinem Gerät. Sie enthält kein Stampost-Konto, keine Werbung, kein Tracking und keine Nutzungsanalyse. Die App sendet diese Daten nicht an ipe studio."
+      ],
+      [
+        "Website-Daten",
+        "Das Browserspiel speichert Sprache, Bestpunktzahl und Sternebewertung in deinem Browser. Lösche die Daten dieser Website im Browser, um sie zu entfernen. Die Website enthält keine Werbung oder Nutzungsanalyse. GitHub Pages hostet die Website und protokolliert aus Sicherheitsgründen die IP-Adressen der Besucher."
+      ],
+      [
+        "Support und Stores",
+        "Wenn du dem Support schreibst, nutzt ipe studio deine E-Mail-Adresse und deine Angaben, um dir zu antworten. Datenschutzanfragen kannst du an dieselbe Adresse senden. Apple und Google verarbeiten Downloads nach ihren jeweiligen Datenschutzhinweisen."
+      ]
+    ],
+    "terms": [
+      [
+        "Nutzung von Stampost",
+        "ipe studio stellt die App und das Browserspiel zur persönlichen, nicht gewerblichen Nutzung bereit. Du kannst sie in der angebotenen Form nutzen. Die Urheberrechte an Spiel, Illustrationen und Klängen liegen bei den jeweiligen Rechteinhabern. Kopieren und Weiterverbreiten erfordern eine Erlaubnis, soweit das Gesetz dies vorsieht."
+      ],
+      [
+        "Gespeicherte Ergebnisse und Änderungen",
+        "Das Löschen der App, ein Gerätewechsel oder das Löschen von Browserdaten können den Zugriff auf gespeicherte Ergebnisse beeinträchtigen. Funktionen können sich ändern oder eingestellt werden. Deine gesetzlichen Rechte gelten. Bei Fragen zu diesen Bedingungen kannst du uns schreiben."
+      ]
+    ]
+  },
+  "id": {
+    "privacy": [
+      [
+        "Data aplikasi",
+        "Aplikasi menyimpan pengaturan dan hasil terbaik di perangkat Anda. Aplikasi ini tidak memiliki akun Stampost, iklan, pelacakan, atau analitik. Aplikasi tidak mengirimkan catatan ini ke ipe studio."
+      ],
+      [
+        "Data situs web",
+        "Gim web menyimpan bahasa, skor tertinggi, dan peringkat bintang di peramban Anda. Hapus data situs ini dari peramban untuk menghapusnya. Situs tidak memuat iklan atau analitik. GitHub Pages menghosting situs dan mencatat alamat IP pengunjung untuk keamanan."
+      ],
+      [
+        "Dukungan dan toko",
+        "Jika Anda menghubungi dukungan melalui email, ipe studio menggunakan alamat email dan informasi yang Anda kirim untuk membalas. Gunakan kontak yang sama untuk permintaan terkait privasi. Apple dan Google memproses unduhan sesuai kebijakan privasi masing-masing."
+      ]
+    ],
+    "terms": [
+      [
+        "Penggunaan Stampost",
+        "ipe studio menyediakan aplikasi dan gim web untuk penggunaan pribadi dan nonkomersial. Anda dapat menggunakannya sebagaimana disediakan. Hak cipta gim, ilustrasi, dan suara dimiliki oleh pemegang hak masing-masing. Penyalinan dan distribusi ulang memerlukan izin apabila diwajibkan oleh hukum."
+      ],
+      [
+        "Hasil tersimpan dan perubahan",
+        "Menghapus aplikasi, berganti perangkat, atau menghapus data peramban dapat memengaruhi akses ke hasil yang tersimpan. Fitur dapat berubah atau dihentikan. Hak Anda menurut hukum tetap berlaku. Hubungi kami jika ada pertanyaan tentang ketentuan ini."
+      ]
+    ]
+  },
+  "th": {
+    "privacy": [
+      [
+        "ข้อมูลในแอป",
+        "แอปบันทึกการตั้งค่าและสถิติที่ดีที่สุดไว้ในอุปกรณ์ของคุณ แอปไม่มีบัญชี Stampost โฆษณา การติดตาม หรือการวิเคราะห์การใช้งาน และไม่ส่งข้อมูลเหล่านี้ไปยัง ipe studio"
+      ],
+      [
+        "ข้อมูลบนเว็บไซต์",
+        "เกมบนเว็บบันทึกภาษา คะแนนสูงสุด และระดับดาวไว้ในเบราว์เซอร์ หากต้องการลบ ให้ล้างข้อมูลเว็บไซต์นี้ในเบราว์เซอร์ เว็บไซต์ไม่มีโฆษณาหรือการวิเคราะห์การใช้งาน GitHub Pages ให้บริการโฮสต์และบันทึกที่อยู่ IP ของผู้เข้าชมเพื่อความปลอดภัย"
+      ],
+      [
+        "การติดต่อฝ่ายสนับสนุนและร้านค้า",
+        "เมื่อคุณส่งอีเมลถึงฝ่ายสนับสนุน ipe studio จะใช้อีเมลและข้อมูลที่คุณส่งมาเพื่อตอบกลับ ใช้ช่องทางเดียวกันนี้สำหรับคำขอเกี่ยวกับความเป็นส่วนตัว Apple และ Google จัดการการดาวน์โหลดตามนโยบายความเป็นส่วนตัวของตน"
+      ]
+    ],
+    "terms": [
+      [
+        "การใช้ Stampost",
+        "ipe studio ให้บริการแอปและเกมบนเว็บเพื่อการใช้งานส่วนบุคคลที่ไม่ใช่เชิงพาณิชย์ คุณใช้เกมได้ตามรูปแบบที่ให้บริการ ลิขสิทธิ์ของเกม ภาพประกอบ และเสียงเป็นของผู้ทรงสิทธิ์แต่ละราย การทำสำเนาหรือเผยแพร่ซ้ำต้องได้รับอนุญาตเมื่อกฎหมายกำหนด"
+      ],
+      [
+        "ผลที่บันทึกและการเปลี่ยนแปลง",
+        "การลบแอป เปลี่ยนอุปกรณ์ หรือล้างข้อมูลเบราว์เซอร์อาจกระทบการเข้าถึงผลที่บันทึกไว้ ฟีเจอร์อาจเปลี่ยนแปลงหรือยุติให้บริการ สิทธิตามกฎหมายของคุณยังคงมีผล หากมีคำถามเกี่ยวกับข้อกำหนดนี้ โปรดติดต่อเรา"
+      ]
+    ]
+  },
+  "vi": {
+    "privacy": [
+      [
+        "Dữ liệu ứng dụng",
+        "Ứng dụng lưu cài đặt và thành tích tốt nhất trên thiết bị của bạn. Ứng dụng không có tài khoản Stampost, quảng cáo, theo dõi hay phân tích sử dụng và không gửi các dữ liệu này cho ipe studio."
+      ],
+      [
+        "Dữ liệu trang web",
+        "Trò chơi web lưu ngôn ngữ, điểm cao nhất và xếp hạng sao trong trình duyệt của bạn. Để xóa, hãy xóa dữ liệu của trang web này trong trình duyệt. Trang web không có quảng cáo hay công cụ phân tích. GitHub Pages lưu trữ trang web và ghi lại địa chỉ IP của khách truy cập nhằm bảo đảm an ninh."
+      ],
+      [
+        "Hỗ trợ và cửa hàng ứng dụng",
+        "Nếu bạn gửi email cho bộ phận hỗ trợ, ipe studio dùng địa chỉ email và nội dung bạn gửi để trả lời. Hãy dùng cùng địa chỉ để gửi yêu cầu về quyền riêng tư. Apple và Google xử lý lượt tải xuống theo chính sách quyền riêng tư của từng bên."
+      ]
+    ],
+    "terms": [
+      [
+        "Sử dụng Stampost",
+        "ipe studio cung cấp ứng dụng và trò chơi web cho mục đích cá nhân, phi thương mại. Bạn có thể sử dụng theo hình thức được cung cấp. Bản quyền trò chơi, hình minh họa và âm thanh thuộc chủ sở hữu tương ứng. Việc sao chép và phân phối lại cần được cho phép khi pháp luật yêu cầu."
+      ],
+      [
+        "Kết quả đã lưu và thay đổi",
+        "Việc xóa ứng dụng, đổi thiết bị hoặc xóa dữ liệu trình duyệt có thể ảnh hưởng đến khả năng truy cập kết quả đã lưu. Các tính năng có thể thay đổi hoặc ngừng cung cấp. Các quyền theo pháp luật của bạn vẫn được áp dụng. Hãy liên hệ với chúng tôi nếu có câu hỏi về điều khoản này."
+      ]
+    ]
+  },
+  "tr": {
+    "privacy": [
+      [
+        "Uygulama verileri",
+        "Uygulama ayarları ve en iyi sonuçları cihazına kaydeder. Uygulamada Stampost hesabı, reklam, izleme veya kullanım analizi yoktur. Uygulama bu kayıtları ipe studio’ya göndermez."
+      ],
+      [
+        "Site verileri",
+        "Web oyunu dilini, en yüksek puanını ve yıldız dereceni tarayıcında saklar. Bunları kaldırmak için tarayıcında bu sitenin verilerini temizle. Sitede reklam veya analiz aracı yoktur. Siteyi barındıran GitHub Pages, güvenlik amacıyla ziyaretçilerin IP adreslerini kaydeder."
+      ],
+      [
+        "Destek ve mağazalar",
+        "Desteğe e-posta gönderdiğinde ipe studio yanıt verebilmek için e-posta adresini ve gönderdiğin içeriği kullanır. Gizlilik taleplerini de aynı adrese gönderebilirsin. Apple ve Google indirmeleri kendi gizlilik bildirimlerine göre işler."
+      ]
+    ],
+    "terms": [
+      [
+        "Stampost kullanımı",
+        "ipe studio, uygulamayı ve web oyununu kişisel, ticari olmayan kullanım için sunar. Bunları sunulduğu biçimde kullanabilirsin. Oyun, çizimler ve sesler üzerindeki telif hakları ilgili hak sahiplerine aittir. Kanunun gerektirdiği durumlarda kopyalama ve yeniden dağıtım için izin gerekir."
+      ],
+      [
+        "Kayıtlı sonuçlar ve değişiklikler",
+        "Uygulamayı silmek, cihaz değiştirmek veya tarayıcı verilerini temizlemek kayıtlı sonuçlara erişimini etkileyebilir. Özellikler değişebilir veya kaldırılabilir. Yasal hakların geçerlidir. Bu koşullarla ilgili soruların için bize ulaşabilirsin."
+      ]
+    ]
+  }
+}

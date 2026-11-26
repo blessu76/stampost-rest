@@ -1,0 +1,74 @@
+{
+  "en": {
+    "title": "Journal",
+    "description": "Development notes and playing tips from the Stampost sorting desk.",
+    "empty": "No entries have been published yet.",
+    "read": "Read the journal"
+  },
+  "ko": {
+    "title": "저널",
+    "description": "도장 우체국 분류대에서 전하는 개발 이야기와 플레이 팁을 읽어 보세요.",
+    "empty": "아직 발행된 글이 없습니다.",
+    "read": "저널 읽기"
+  },
+  "ja": {
+    "title": "ジャーナル",
+    "description": "Stampostの仕分け台から、開発の話題や遊び方のヒントをお届けします。",
+    "empty": "公開済みの記事はまだありません。",
+    "read": "ジャーナルを読む"
+  },
+  "zh-Hant": {
+    "title": "開發日誌",
+    "description": "來看看 Stampost 分揀台上的開發故事與遊玩技巧。",
+    "empty": "目前尚未發布文章。",
+    "read": "閱讀開發日誌"
+  },
+  "es": {
+    "title": "Diario",
+    "description": "Notas de desarrollo y consejos desde la mesa de reparto de Stampost.",
+    "empty": "Aún no se han publicado entradas.",
+    "read": "Leer el diario"
+  },
+  "pt-BR": {
+    "title": "Diário",
+    "description": "Notas de desenvolvimento e dicas de jogo da mesa de triagem de Stampost.",
+    "empty": "Ainda não há publicações.",
+    "read": "Ler o diário"
+  },
+  "fr": {
+    "title": "Journal",
+    "description": "Notes de développement et conseils depuis le bureau de tri de Stampost.",
+    "empty": "Aucun article n’a encore été publié.",
+    "read": "Lire le journal"
+  },
+  "de": {
+    "title": "Journal",
+    "description": "Entwicklungsnotizen und Spieltipps vom Sortiertisch in Stampost.",
+    "empty": "Es gibt noch keine veröffentlichten Beiträge.",
+    "read": "Journal lesen"
+  },
+  "id": {
+    "title": "Jurnal",
+    "description": "Catatan pengembangan dan kiat bermain dari meja sortir Stampost.",
+    "empty": "Belum ada tulisan yang diterbitkan.",
+    "read": "Baca jurnal"
+  },
+  "th": {
+    "title": "บันทึก",
+    "description": "บันทึกการพัฒนาและเคล็ดลับการเล่นจากโต๊ะคัดแยกของ Stampost",
+    "empty": "ยังไม่มีบทความที่เผยแพร่",
+    "read": "อ่านบันทึก"
+  },
+  "vi": {
+    "title": "Nhật ký",
+    "description": "Ghi chép phát triển và mẹo chơi từ bàn phân loại của Stampost.",
+    "empty": "Chưa có bài viết nào được đăng.",
+    "read": "Đọc nhật ký"
+  },
+  "tr": {
+    "title": "Günlük",
+    "description": "Stampost ayırma masasından geliştirme notları ve oyun ipuçları.",
+    "empty": "Henüz yayımlanmış yazı yok.",
+    "read": "Günlüğü oku"
+  }
+}

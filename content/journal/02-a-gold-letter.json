@@ -1,0 +1,101 @@
+{
+  "slug": "a-gold-letter",
+  "editions": {
+    "en": {
+      "title": "A gold letter on the sorting desk",
+      "summary": "A gold letter doubles the score of the batch it joins.",
+      "paragraphs": [
+        "A gold letter matches any stamp. It joins the batch at the front of the queue and doubles its score before combo and Fever multipliers. If only gold letters are waiting, any stamp button sends them.",
+        "Deliver 18 letters to start six seconds of fever. Batches earn double points during that window. Watch the head of the queue as the deliveries speed up."
+      ]
+    },
+    "ko": {
+      "title": "분류대에 황금 편지가 도착했어요",
+      "summary": "황금 편지는 그 편지가 포함된 묶음의 점수를 두 배로 올려요.",
+      "paragraphs": [
+        "황금 편지는 어떤 도장에도 맞아요. 줄 맨 앞의 묶음에 함께 들어가고, 콤보와 피버 배수를 적용하기 전에 묶음 점수를 두 배로 올려요. 황금 편지만 남았다면 아무 도장 버튼이나 눌러 보내세요.",
+        "편지 18장을 보내면 6초 동안 피버가 켜지고 묶음 점수가 두 배가 돼요. 편지가 더 빠르게 도착하니 줄 맨 앞을 살펴보세요."
+      ]
+    },
+    "ja": {
+      "title": "仕分け台に金色の手紙が届いたら",
+      "summary": "金色の手紙を含む束はスコアが2倍になります。",
+      "paragraphs": [
+        "金色の手紙はどの切手にも合います。列の先頭の束に加わると、コンボとフィーバーの倍率をかける前の得点が2倍になります。金色の手紙だけなら、どの切手ボタンでも送れます。",
+        "18通送るとフィーバーが6秒間続き、その間は束の得点が2倍になります。手紙が速く届くので、列の先頭に注目しましょう。"
+      ]
+    },
+    "zh-Hant": {
+      "title": "分揀台上的金色信件",
+      "summary": "含有金色信件的整疊信可以獲得雙倍分數。",
+      "paragraphs": [
+        "金色信件可以搭配任何郵票。它會加入隊伍最前面的那疊信，在套用連擊和狂熱倍率前，讓整疊分數加倍。如果只剩金色信件，點任一郵票按鈕就能寄出。",
+        "寄出 18 封信後，狂熱會持續 6 秒，這段時間的整疊分數加倍。到件速度變快時，記得留意隊伍最前端。"
+      ]
+    },
+    "es": {
+      "title": "Una carta dorada llega a la mesa",
+      "summary": "Una carta dorada duplica la puntuación del lote en el que va.",
+      "paragraphs": [
+        "La carta dorada combina con cualquier sello. Se suma al grupo del principio de la fila y duplica sus puntos antes de aplicar los multiplicadores de combo y fiebre. Si solo quedan cartas doradas, puedes enviarlas con cualquier botón de sello.",
+        "Envía 18 cartas para activar seis segundos de fiebre. Durante ese tiempo, los lotes valen el doble. Vigila el principio de la fila cuando se aceleren las llegadas."
+      ]
+    },
+    "pt-BR": {
+      "title": "Uma carta dourada na mesa de triagem",
+      "summary": "Uma carta dourada dobra os pontos do lote em que ela está.",
+      "paragraphs": [
+        "A carta dourada combina com qualquer selo. Ela entra no lote da frente da fila e dobra a pontuação antes dos multiplicadores de combo e febre. Se só houver cartas douradas, qualquer botão de selo serve para enviá-las.",
+        "Envie 18 cartas para ativar seis segundos de febre. Nesse período, os lotes valem o dobro. Observe a frente da fila enquanto as entregas ficam mais rápidas."
+      ]
+    },
+    "fr": {
+      "title": "Une lettre dorée sur le bureau de tri",
+      "summary": "Une lettre dorée double les points du lot dont elle fait partie.",
+      "paragraphs": [
+        "La lettre dorée s’associe à n’importe quel timbre. Elle rejoint le lot en tête de file et double ses points avant l’application des multiplicateurs de combo et de fièvre. S’il ne reste que des lettres dorées, envoie-les avec n’importe quel bouton de timbre.",
+        "Expédiez 18 lettres pour déclencher six secondes de fièvre. Les lots valent le double pendant ce laps de temps. Gardez un œil sur la tête de file lorsque les lettres arrivent plus vite."
+      ]
+    },
+    "de": {
+      "title": "Ein goldener Brief auf dem Sortiertisch",
+      "summary": "Ein goldener Brief verdoppelt die Punkte des Stapels, in dem er liegt.",
+      "paragraphs": [
+        "Ein goldener Brief passt zu jeder Marke. Er gehört zum vordersten Stapel und verdoppelt dessen Punkte, bevor die Kombo- und Fiebermultiplikatoren dazukommen. Warten nur goldene Briefe, kannst du sie mit jeder Markentaste abschicken.",
+        "Schicke 18 Briefe ab, um sechs Sekunden Fieber zu starten. In dieser Zeit bringen Stapel doppelte Punkte. Achte auf den vordersten Brief, wenn die Zustellungen schneller werden."
+      ]
+    },
+    "id": {
+      "title": "Surat emas di meja sortir",
+      "summary": "Surat emas menggandakan skor kelompok yang memuatnya.",
+      "paragraphs": [
+        "Surat emas cocok dengan prangko apa pun. Surat emas ikut dalam kelompok paling depan dan menggandakan skornya sebelum pengali kombo dan Fever berlaku. Kalau hanya ada surat emas, tekan tombol prangko mana saja untuk mengirimnya.",
+        "Kirim 18 surat untuk memulai enam detik Fever. Selama itu, skor kelompok menjadi dua kali lipat. Perhatikan bagian depan antrean ketika surat tiba lebih cepat."
+      ]
+    },
+    "th": {
+      "title": "จดหมายทองบนโต๊ะคัดแยก",
+      "summary": "จดหมายทองทำให้คะแนนของชุดที่มีจดหมายใบนั้นเพิ่มเป็นสองเท่า",
+      "paragraphs": [
+        "จดหมายทองเข้ากับแสตมป์ได้ทุกแบบ จดหมายทองจะรวมกับชุดหน้าแถวและเพิ่มคะแนนของชุดเป็นสองเท่าก่อนใช้ตัวคูณคอมโบและฟีเวอร์ ถ้าเหลือแต่จดหมายทอง ให้แตะปุ่มแสตมป์ปุ่มไหนก็ได้เพื่อส่ง",
+        "ส่งจดหมาย 18 ใบเพื่อเริ่มฟีเวอร์ 6 วินาที ในช่วงนี้คะแนนของชุดจะเพิ่มเป็นสองเท่า คอยดูหน้าแถวเมื่อจดหมายมาถึงเร็วขึ้น"
+      ]
+    },
+    "vi": {
+      "title": "Thư vàng trên bàn phân loại",
+      "summary": "Một lá thư vàng nhân đôi điểm của lô thư chứa nó.",
+      "paragraphs": [
+        "Thư vàng hợp với mọi loại tem. Lá thư nhập vào lô đầu hàng và nhân đôi điểm của lô trước khi tính hệ số combo và Cao trào. Nếu chỉ còn thư vàng, chạm nút tem nào cũng gửi được.",
+        "Gửi 18 lá thư để kích hoạt sáu giây Cao trào. Trong thời gian đó, điểm của mỗi lô được nhân đôi. Hãy để ý đầu hàng khi thư đến nhanh hơn."
+      ]
+    },
+    "tr": {
+      "title": "Ayırma masasında altın mektup",
+      "summary": "Altın mektup, yer aldığı grubun puanını ikiye katlar.",
+      "paragraphs": [
+        "Altın mektup her pula uyar. Sıranın başındaki gruba katılır ve Kombo ile Ateş çarpanları uygulanmadan önce grubun puanını ikiye katlar. Yalnızca altın mektup kaldıysa herhangi bir pul düğmesine dokunarak gönderebilirsin.",
+        "Altı saniyelik Ateş için 18 mektup gönder. Bu sırada gruplar iki kat puan getirir. Mektuplar daha hızlı gelirken sıranın başını takip et."
+      ]
+    }
+  }
+}

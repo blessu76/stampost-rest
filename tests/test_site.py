@@ -1,10 +1,12 @@
 import hashlib
 import json
 import re
+import tempfile
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
+from unittest.mock import patch
 from xml.etree import ElementTree as ET
 
 from scripts import build_site as site
@@ -122,16 +124,19 @@ class SiteTests(unittest.TestCase):
                 self.assertIn(f"from '{site.asset_url(rules_path, rules)}';".encode(), script)
 
     def test_site_links_alternates_and_cache_busting(self):
+        _, ledger = site.journal_data()
+        sections = (*site.SECTIONS, *site.journal_content.sections(ledger))
         for lang in site.languages.SUPPORTED:
-            for section in site.SECTIONS:
+            for section in sections:
                 route = site.route(lang, section)
                 with self.subTest(route=route):
                     page = Page(site.PUBLIC / route.lstrip("/") / "index.html")
                     self.assertEqual(len(page.find("link", rel="canonical", href=site.BASE + route)), 1)
                     alternates = {tag["hreflang"]: tag["href"] for tag in page.find("link", rel="alternate")}
                     self.assertEqual(alternates, {**site.alternate_urls(section), "x-default": site.BASE + site.route("en", section)})
-                    self.assertEqual(len(page.find("a", href=site.PRIVACY)), 1)
-                    self.assertEqual(len(page.find("a", href=site.TERMS)), 1)
+                    self.assertTrue(page.find("a", href=site.route(lang, "privacy/")))
+                    self.assertTrue(page.find("a", href=site.route(lang, "terms/")))
+                    self.assertTrue(page.find("a", href=site.route(lang, "journal/")))
                     for tag, attribute in (("a", "href"), ("option", "value"), ("link", "href"), ("script", "src"), ("img", "src")):
                         for attrs in page.find(tag):
                             target = urlsplit(attrs.get(attribute, ""))
@@ -173,9 +178,74 @@ class SiteTests(unittest.TestCase):
         self.assertFalse(site.redirects.sitemap_leaks(sitemap_file.read_text(), overrides=site.REDIRECT_OVERRIDES))
         tree = ET.parse(sitemap_file)
         ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-        expected = [site.BASE + site.route(lang, section) for section in site.SECTIONS for lang in site.languages.SUPPORTED]
+        _, ledger = site.journal_data()
+        sections = (*site.SECTIONS, *site.journal_content.sections(ledger))
+        expected = [site.BASE + site.route(lang, section) for section in sections for lang in site.languages.SUPPORTED]
         self.assertCountEqual([loc.text for loc in tree.findall("s:url/s:loc", ns)], expected)
         self.assertIn(f"Sitemap: {site.BASE}/sitemap.xml", (site.PUBLIC / "robots.txt").read_text())
         self.assertEqual((site.PUBLIC / "CNAME").read_text().strip(), site.DOMAIN)
         self.assertIn(f"{site.BASE}/support/", (site.PUBLIC / "llms.txt").read_text())
         self.assertEqual(len(Page(site.PUBLIC / "404.html").find("meta", name="robots", content="noindex,follow")), 1)
+
+    def test_localized_policy_copy(self):
+        self.assertEqual(set(site.POLICIES), set(site.languages.SUPPORTED))
+        self.assertEqual(set(site.JOURNAL_UI), set(site.languages.SUPPORTED))
+        for lang in site.languages.SUPPORTED:
+            for policy in ("privacy", "terms"):
+                path = site.PUBLIC / site.route(lang, policy + "/").lstrip("/") / "index.html"
+                with self.subTest(lang=lang, policy=policy):
+                    page = Page(path)
+                    self.assertEqual(len(page.find("html", lang=lang)), 1)
+                    self.assertEqual(len(page.find("a", href="mailto:" + site.CONTACT)), 1)
+                    for heading, paragraph in site.POLICIES[lang][policy]:
+                        self.assertIn(f"<h2>{site.esc(heading)}</h2><p>{site.esc(paragraph)}</p>", path.read_text())
+                    if lang != "en":
+                        self.assertNotEqual(site.POLICIES[lang][policy], site.POLICIES["en"][policy])
+
+    def test_journal_suppresses_unreviewed_or_incomplete_posts(self):
+        slug = "review-fixture"
+        today = "2026-11-26"
+        editions = {
+            lang: {"title": lang, "url": "/", "summary": lang, "paragraphs": [lang],
+                   "copy_review": "iris", "copy_review_date": today}
+            for lang in site.languages.SUPPORTED
+        }
+        choose = site.journal_content.next_post
+        self.assertEqual(choose({slug: editions}, {}, today), slug)
+        self.assertIsNone(choose({slug: editions}, {"another-post": today}, today))
+        for missing in ("ko", "zh-Hant"):
+            self.assertIsNone(choose({slug: {lang: ed for lang, ed in editions.items() if lang != missing}}, {}, today))
+        for bad_date in ("", "2026-02-30", "2026-11-27"):
+            editions["ko"]["copy_review_date"] = bad_date
+            self.assertIsNone(choose({slug: editions}, {}, today))
+
+    def test_dated_journal_renders_only_published_entries(self):
+        day = "2026-11-26"
+        editions = {
+            lang: {"title": f"Title {lang}", "summary": f"Summary {lang}", "paragraphs": [f"Copy {lang}"],
+                   "copy_review": "iris", "copy_review_date": day}
+            for lang in site.languages.SUPPORTED
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            for filename, slug in (("01-post.json", "dated"), ("02-post.json", "queued")):
+                (directory / filename).write_text(json.dumps({"slug": slug, "editions": editions}))
+            ledger = directory / site.journal_content.LEDGER
+            ledger.write_text(json.dumps({"dated": day}))
+            with patch.object(site.journal_content, "DIRECTORY", directory):
+                files = site.expected_files()
+                for lang in site.languages.SUPPORTED:
+                    index = site.route(lang, "journal/").lstrip("/")
+                    listing = files[index + "index.html"].decode()
+                    post = files[index + "dated/index.html"].decode()
+                    self.assertIn(f'<time datetime="{day}">{day}</time>', listing)
+                    self.assertIn(f'<time datetime="{day}">{day}</time>', post)
+                    self.assertIn(f"<h1>Title {lang}</h1>", post)
+                    metadata = post.split('<script type="application/ld+json">', 1)[1].split("</script>", 1)[0]
+                    self.assertEqual(json.loads(metadata)["@type"], "BlogPosting")
+                    self.assertIn(site.route(lang, "journal/dated/"), files["sitemap.xml"].decode())
+                    self.assertNotIn(index + "queued/index.html", files)
+                    self.assertNotIn("queued/", listing)
+                ledger.write_text(json.dumps({"dated": day, "queued": day}))
+                with self.assertRaisesRegex(ValueError, "one entry per calendar day"):
+                    site.expected_files()

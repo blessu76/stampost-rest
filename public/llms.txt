@@ -7,8 +7,9 @@
 - [Game overview](https://stampost.ipe.rest/)
 - [Support and FAQ](https://stampost.ipe.rest/support/)
 - [Play in your browser and see the rules](https://stampost.ipe.rest/play/)
-- [Terms of use](https://ipe.rest/legal/)
-- [Privacy policy](https://ipe.rest/privacy/)
+- [Development journal](https://stampost.ipe.rest/journal/)
+- [Terms of use](https://stampost.ipe.rest/terms/)
+- [Privacy policy](https://stampost.ipe.rest/privacy/)
 
 ## Languages
 
